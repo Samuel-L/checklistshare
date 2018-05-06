@@ -34,5 +34,5 @@ class ItemSerializerTests(TestCase):
         ]))
 
     def test_serializer_fields_content(self):
-        self.assertEqual(self.data['checklist'], self.item.checklist.title)
+        self.assertEqual(self.data['checklist'], self.item.checklist.id)
         self.assertEqual(self.data['name'], self.item.name)

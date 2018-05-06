@@ -8,8 +8,6 @@ class ChecklistSerializer(serializers.ModelSerializer):
         fields = ('id', 'title', 'url')
 
 class ItemSerializer(serializers.ModelSerializer):
-    checklist = serializers.ReadOnlyField(source='checklist.title')
-
     class Meta:
         model = Item
         fields = ('id', 'checklist', 'name')
