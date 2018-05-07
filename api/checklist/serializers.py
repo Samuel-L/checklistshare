@@ -1,13 +1,13 @@
 from rest_framework import serializers
 
-from .models import Checklist, Item
+from .models import List, Item
 
-class ChecklistSerializer(serializers.ModelSerializer):
+class ListSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Checklist
+        model = List
         fields = ('id', 'title', 'url')
 
 class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Item
-        fields = ('id', 'checklist', 'name')
+        fields = ('id', 'List', 'name')

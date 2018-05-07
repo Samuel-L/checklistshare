@@ -1,7 +1,7 @@
 from rest_framework import routers
 
-from .views import ChecklistViewSet, ItemViewSet
+from .views import ListViewSet, ItemViewSet
 
 router = routers.SimpleRouter()
-router.register(r'checklists/lists', ChecklistViewSet, 'checklists')
+router.register(r'checklists/lists', ListViewSet, 'lists')
 router.register(r'checklists/items', ItemViewSet, 'items')

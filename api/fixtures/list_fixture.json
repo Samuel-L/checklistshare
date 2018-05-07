@@ -1,12 +1,12 @@
 [
-    { "model": "checklist.checklist",
+    { "model": "checklist.list",
         "pk": 1,
         "fields": {
             "title": "Checklist 1",
             "url": "7f44d3f5-0155-48b5-8ffc-53d79dbcc0c2"
         }
     },
-    { "model": "checklist.checklist",
+    { "model": "checklist.list",
         "pk": 2,
         "fields": {
             "title": "Checklist 2",
