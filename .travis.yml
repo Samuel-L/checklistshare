@@ -11,7 +11,7 @@ env:
         - PYTHONPATH="/home/travis/build/samuel-l/checklistshare"
         - PIP_USE_MIRRORS=true
         - BUILD_ON_TRAVIS=true
-        - MODE="env"
+        - MODE="dev"
     matrix:
         - DJANGO=2.0 DB=postgresql
 
