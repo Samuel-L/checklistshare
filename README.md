@@ -1,5 +1,5 @@
 # Checklistshare
-[![Build Status](https://travis-ci.org/travis-ci/travis-web.svg?branch=master)](https://travis-ci.org/travis-ci/travis-web)
+[![Build Status](https://travis-ci.org/Samuel-L/checklistshare.svg?branch=development)](https://travis-ci.org/Samuel-L/checklistshare)
 
 A web application where you can create password-protected checklists and share them. 
 
