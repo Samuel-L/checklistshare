@@ -15,7 +15,7 @@ class Item(models.Model):
     """
     Model for items
     """
-    List = models.ForeignKey(List, on_delete=models.CASCADE)
+    List = models.ForeignKey(List, on_delete=models.CASCADE, related_name='items')
     name = models.CharField(max_length=100)
 
     def __str__(self):
