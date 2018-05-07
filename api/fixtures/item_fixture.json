@@ -1,0 +1,30 @@
+[
+    { "model": "checklist.item",
+        "pk": 1,
+        "fields": {
+            "List": 1,
+            "name": "Item 1"
+        }
+    },
+    { "model": "checklist.item",
+        "pk": 2,
+        "fields": {
+            "List": 1,
+            "name": "Item 2"
+        }
+    },
+    { "model": "checklist.item",
+        "pk": 3,
+        "fields": {
+            "List": 2,
+            "name": "Item 1"
+        }
+    },
+    { "model": "checklist.item",
+        "pk": 4,
+        "fields": {
+            "List": 2,
+            "name": "Item 2"
+        }
+    }
+]
