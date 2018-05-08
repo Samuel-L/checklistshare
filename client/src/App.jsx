@@ -5,6 +5,8 @@ import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import lightBlue from 'material-ui/colors/lightBlue';
 import blueGrey from 'material-ui/colors/blueGrey';
 
+import Header from './shared/Header';
+
 const theme = createMuiTheme({
   palette: {
     primary: lightBlue,
@@ -16,7 +18,7 @@ const App = () => (
   <MuiThemeProvider theme={theme}>
     <div className="app-container">
       <CssBaseline />
-      App
+      <Header />
     </div>
   </MuiThemeProvider>
 );
