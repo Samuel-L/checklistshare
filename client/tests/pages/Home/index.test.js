@@ -25,5 +25,11 @@ describe('pages: Home', () => {
       wrapper.find('#add-item-button').at(0).simulate('click');
       expect(wrapper.state('items').length).toEqual(2);
     });
+
+    it('should handle deleting items', () => {
+      expect(wrapper.state('items').length).toEqual(1);
+      wrapper.find('#delete-item-button').at(0).simulate('click');
+      expect(wrapper.state('items').length).toEqual(0);
+    });
   });
 });

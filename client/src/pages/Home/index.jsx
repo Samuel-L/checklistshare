@@ -17,6 +17,19 @@ export class Home extends Component {
     });
   };
 
+  handleDeleteItem = (idx) => {
+    this.setState({
+      items: this.state.items.filter((item, iidx) => idx !== iidx),
+    }, () => {
+      // Ensure that the id field is unique
+      const newItems = this.state.items.map((item, iidx) => ({
+        ...item, id: iidx,
+      }));
+
+      this.setState({ items: newItems });
+    });
+  };
+
   render() {
     return (
       <Grid container justify="center" alignItems="center">
@@ -30,6 +43,7 @@ export class Home extends Component {
             handleSubmit={() => {}}
             handleTextFieldChange={() => {}}
             handleAddItem={this.handleAddItem}
+            handleDeleteItem={this.handleDeleteItem}
             title="Checklist title"
             items={this.state.items}
           />
