@@ -1,0 +1,226 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pages: Home should render 1`] = `
+<div
+  className="MuiGrid-container-1 MuiGrid-align-items-xs-center-9 MuiGrid-justify-xs-center-18"
+>
+  <div
+    className="MuiGrid-item-2 MuiGrid-grid-xs-12-38"
+  >
+    <h1
+      className="MuiTypography-root-91 MuiTypography-display1-95 MuiTypography-alignCenter-104"
+    >
+      Create checklist
+    </h1>
+  </div>
+  <div
+    className="MuiGrid-item-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-lg-6-71"
+  >
+    <form
+      id="create-list-form"
+      onSubmit={[Function]}
+    >
+      <div
+        aria-describedby="name-helper-text"
+        className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 MuiFormControl-fullWidth-122 CreateChecklistForm-textField-115"
+        onBlur={[Function]}
+        onFocus={[Function]}
+      >
+        <label
+          className="MuiFormLabel-root-128 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127 MuiInputLabel-shrink-126"
+          data-shrink={true}
+          htmlFor="name"
+        >
+          Title
+          <span
+            className="MuiFormLabel-asterisk-132"
+          >
+             *
+          </span>
+        </label>
+        <div
+          className="MuiInput-root-133 MuiInput-fullWidth-140 MuiInput-formControl-134 MuiInput-underline-137"
+        >
+          <input
+            aria-invalid={false}
+            aria-required={true}
+            autoComplete={undefined}
+            autoFocus={undefined}
+            className="MuiInput-input-141"
+            defaultValue={undefined}
+            disabled={false}
+            id="name"
+            name={undefined}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={undefined}
+            onKeyUp={undefined}
+            placeholder={undefined}
+            readOnly={undefined}
+            required={true}
+            rows={undefined}
+            type="text"
+            value="Checklist title"
+          />
+        </div>
+        <p
+          className="MuiFormHelperText-root-146"
+          id="name-helper-text"
+        >
+          Please give your checklist a title
+        </p>
+      </div>
+      <div
+        className="ChecklistItem-root-150"
+      >
+        <div
+          aria-describedby={undefined}
+          className="MuiFormControl-root-119 MuiFormControl-marginNormal-120 ChecklistItem-textField-151"
+          onBlur={[Function]}
+          onFocus={[Function]}
+        >
+          <label
+            className="MuiFormLabel-root-128 MuiInputLabel-root-123 MuiInputLabel-formControl-124 MuiInputLabel-animated-127"
+            data-shrink={false}
+            htmlFor="item-0"
+          >
+            Item
+            <span
+              className="MuiFormLabel-asterisk-132"
+            >
+               *
+            </span>
+          </label>
+          <div
+            className="MuiInput-root-133 MuiInput-formControl-134 MuiInput-underline-137"
+          >
+            <input
+              aria-invalid={false}
+              aria-required={true}
+              autoComplete={undefined}
+              autoFocus={undefined}
+              className="MuiInput-input-141"
+              defaultValue={undefined}
+              disabled={false}
+              id="item-0"
+              name={undefined}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={undefined}
+              onKeyUp={undefined}
+              placeholder={undefined}
+              readOnly={undefined}
+              required={true}
+              rows={undefined}
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <button
+          aria-label="delete"
+          className="MuiButtonBase-root-168 MuiButton-root-153 MuiButton-raised-158 ChecklistItem-icon-152"
+          disabled={false}
+          id="delete-item-button"
+          onBlur={[Function]}
+          onClick={undefined}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="MuiButton-label-154"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-171"
+              color={undefined}
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+              />
+            </svg>
+          </span>
+          <span
+            className="MuiTouchRipple-root-177"
+          />
+        </button>
+      </div>
+      <div
+        className="CreateChecklistForm-buttonGroup-116"
+      >
+        <div
+          className="CreateChecklistForm-buttonDiv-117"
+        >
+          <button
+            className="MuiButtonBase-root-168 MuiButton-root-153 MuiButton-flatPrimary-155 CreateChecklistForm-button-118"
+            disabled={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            type="button"
+          >
+            <span
+              className="MuiButton-label-154"
+            >
+              Add Item
+            </span>
+            <span
+              className="MuiTouchRipple-root-177"
+            />
+          </button>
+        </div>
+        <div
+          className="CreateChecklistForm-buttonDiv-117"
+        >
+          <button
+            className="MuiButtonBase-root-168 MuiButton-root-153 MuiButton-flatPrimary-155 CreateChecklistForm-button-118"
+            disabled={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            type="button"
+          >
+            <span
+              className="MuiButton-label-154"
+            >
+              Create List
+            </span>
+            <span
+              className="MuiTouchRipple-root-177"
+            />
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;

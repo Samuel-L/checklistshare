@@ -6,6 +6,7 @@ import lightBlue from 'material-ui/colors/lightBlue';
 import blueGrey from 'material-ui/colors/blueGrey';
 
 import Header from './shared/Header';
+import HomePage from './pages/Home';
 
 const theme = createMuiTheme({
   palette: {
@@ -19,6 +20,7 @@ const App = () => (
     <div className="app-container">
       <CssBaseline />
       <Header />
+      <HomePage />
     </div>
   </MuiThemeProvider>
 );
