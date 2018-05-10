@@ -53,18 +53,25 @@ const CreateChecklistForm = props => (
       margin="normal"
       className={props.classes.textField}
     />
-    <ChecklistItem
-      item={{ id: 0, name: '' }}
-      idx={0}
-      handleItemTextChange={() => {}}
-      handleItemDelete={() => {}}
-    />
+    {
+      props.items.map((item, idx) => (
+        <ChecklistItem
+          key={item.id}
+          item={item}
+          idx={idx}
+          handleItemTextChange={() => {}}
+          handleItemDelete={() => {}}
+        />
+      ))
+    }
     <div className={props.classes.buttonGroup}>
       <div className={props.classes.buttonDiv}>
         <Button
+          id="add-item-button"
           className={props.classes.button}
           variant="flat"
           color="primary"
+          onClick={props.handleAddItem}
         >
           Add Item
         </Button>
@@ -86,7 +93,12 @@ CreateChecklistForm.propTypes = {
   classes: PropTypes.objectOf(PropTypes.string).isRequired,
   handleSubmit: PropTypes.func.isRequired,
   handleTextFieldChange: PropTypes.func.isRequired,
+  handleAddItem: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
+  items: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+  })).isRequired,
 };
 
 CreateChecklistForm.defaultProps = {};

@@ -6,7 +6,16 @@ import Typography from 'material-ui/Typography';
 import CreateChecklistForm from './CreateChecklistForm';
 
 export class Home extends Component {
-  state = {};
+  state = {
+    items: [{ id: 0, name: '' }],
+  };
+
+  handleAddItem = () => {
+    const { items } = this.state;
+    this.setState({
+      items: this.state.items.concat([{ id: items.length, name: '' }]),
+    });
+  };
 
   render() {
     return (
@@ -20,7 +29,9 @@ export class Home extends Component {
           <CreateChecklistForm
             handleSubmit={() => {}}
             handleTextFieldChange={() => {}}
+            handleAddItem={this.handleAddItem}
             title="Checklist title"
+            items={this.state.items}
           />
         </Grid>
       </Grid>

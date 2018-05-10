@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`pages: Home should render 1`] = `
+exports[`pages: Home rendering should render 1`] = `
 <div
   className="MuiGrid-container-1 MuiGrid-align-items-xs-center-9 MuiGrid-justify-xs-center-18"
 >
@@ -167,7 +167,9 @@ exports[`pages: Home should render 1`] = `
           <button
             className="MuiButtonBase-root-168 MuiButton-root-153 MuiButton-flatPrimary-155 CreateChecklistForm-button-118"
             disabled={false}
+            id="add-item-button"
             onBlur={[Function]}
+            onClick={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
             onKeyUp={[Function]}
