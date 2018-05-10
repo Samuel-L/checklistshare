@@ -8,7 +8,7 @@ describe('pages: Home', () => {
   describe('rendering', () => {
     const tree = renderer.create(<Home />).toJSON();
 
-    it('should render', () => {
+    it('matches snapshot', () => {
       expect(tree).toMatchSnapshot(); 
     });
   });
@@ -20,13 +20,21 @@ describe('pages: Home', () => {
       wrapper = mount(<Home />);
     });
 
-    it('should handle adding new items', () => {
+    it('handles changing the checklist title', () => {
+      wrapper.find('[id="title"]').at(3).simulate('change',
+        { target: { name: 'title', value: 'Checklist title' } }
+      );
+
+      expect(wrapper.state('title')).toBe('Checklist title');
+    });
+
+    it('handles adding new items', () => {
       expect(wrapper.state('items').length).toEqual(1); 
       wrapper.find('#add-item-button').at(0).simulate('click');
       expect(wrapper.state('items').length).toEqual(2);
     });
 
-    it('should handle deleting items', () => {
+    it('handles deleting items', () => {
       expect(wrapper.state('items').length).toEqual(1);
       wrapper.find('#delete-item-button').at(0).simulate('click');
       expect(wrapper.state('items').length).toEqual(0);

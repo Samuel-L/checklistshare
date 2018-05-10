@@ -44,10 +44,10 @@ const CreateChecklistForm = props => (
   >
     <TextField
       required
-      id="name"
+      id="title"
       label="Title"
       value={props.title}
-      onChange={props.handleTextFieldChange}
+      onChange={props.handleTitleChange}
       helperText="Please give your checklist a title"
       fullWidth
       margin="normal"
@@ -92,7 +92,7 @@ const CreateChecklistForm = props => (
 CreateChecklistForm.propTypes = {
   classes: PropTypes.objectOf(PropTypes.string).isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  handleTextFieldChange: PropTypes.func.isRequired,
+  handleTitleChange: PropTypes.func.isRequired,
   handleAddItem: PropTypes.func.isRequired,
   handleDeleteItem: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,

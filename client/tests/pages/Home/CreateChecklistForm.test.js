@@ -10,7 +10,7 @@ describe('pages/Home: CreateChecklistForm', () => {
     <CreateChecklistForm
       classes={classes}
       handleSubmit={jest.fn()}
-      handleTextFieldChange={jest.fn()}
+      handleTitleChange={jest.fn()}
       handleAddItem={jest.fn()}
       handleDeleteItem={jest.fn()}
       title="Checklist title"

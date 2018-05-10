@@ -7,7 +7,12 @@ import CreateChecklistForm from './CreateChecklistForm';
 
 export class Home extends Component {
   state = {
+    title: '',
     items: [{ id: 0, name: '' }],
+  };
+
+  handleTitleChange = (event) => {
+    this.setState({ title: event.target.value });
   };
 
   handleAddItem = () => {
@@ -41,10 +46,10 @@ export class Home extends Component {
         <Grid item xs={12} lg={6}>
           <CreateChecklistForm
             handleSubmit={() => {}}
-            handleTextFieldChange={() => {}}
+            handleTitleChange={this.handleTitleChange}
             handleAddItem={this.handleAddItem}
             handleDeleteItem={this.handleDeleteItem}
-            title="Checklist title"
+            title={this.state.title}
             items={this.state.items}
           />
         </Grid>
