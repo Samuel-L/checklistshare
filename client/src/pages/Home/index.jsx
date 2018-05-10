@@ -15,6 +15,17 @@ export class Home extends Component {
     this.setState({ title: event.target.value });
   };
 
+  handleItemTextChange = idx => (event) => {
+    const newItems = this.state.items.map((item, iidx) => {
+      if (idx !== iidx) {
+        return item;
+      }
+      return { ...item, name: event.target.value };
+    });
+
+    this.setState({ items: newItems });
+  };
+
   handleAddItem = () => {
     const { items } = this.state;
     this.setState({
@@ -47,6 +58,7 @@ export class Home extends Component {
           <CreateChecklistForm
             handleSubmit={() => {}}
             handleTitleChange={this.handleTitleChange}
+            handleItemTextChange={this.handleItemTextChange}
             handleAddItem={this.handleAddItem}
             handleDeleteItem={this.handleDeleteItem}
             title={this.state.title}

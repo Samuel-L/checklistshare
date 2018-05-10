@@ -28,6 +28,14 @@ describe('pages: Home', () => {
       expect(wrapper.state('title')).toBe('Checklist title');
     });
 
+    it('handles changing item text', () => {
+      expect(wrapper.state('items')[0].name).toBe('');
+      wrapper.find('[id="item-0"]').at(3).simulate('change',
+        { target: { name: 'item-0', value: 'Item text' } }
+      );
+      expect(wrapper.state('items')[0].name).toBe('Item text');
+    });
+
     it('handles adding new items', () => {
       expect(wrapper.state('items').length).toEqual(1); 
       wrapper.find('#add-item-button').at(0).simulate('click');

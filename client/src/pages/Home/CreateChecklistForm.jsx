@@ -59,7 +59,7 @@ const CreateChecklistForm = props => (
           key={item.id}
           item={item}
           idx={idx}
-          handleItemTextChange={() => {}}
+          handleItemTextChange={props.handleItemTextChange}
           handleItemDelete={props.handleDeleteItem}
         />
       ))
@@ -93,6 +93,7 @@ CreateChecklistForm.propTypes = {
   classes: PropTypes.objectOf(PropTypes.string).isRequired,
   handleSubmit: PropTypes.func.isRequired,
   handleTitleChange: PropTypes.func.isRequired,
+  handleItemTextChange: PropTypes.func.isRequired,
   handleAddItem: PropTypes.func.isRequired,
   handleDeleteItem: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
