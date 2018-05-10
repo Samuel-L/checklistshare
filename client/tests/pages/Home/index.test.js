@@ -47,5 +47,39 @@ describe('pages: Home', () => {
       wrapper.find('#delete-item-button').at(0).simulate('click');
       expect(wrapper.state('items').length).toEqual(0);
     });
+
+    it('handles creating an entire checklist', () => {
+      const finishedChecklistState = {
+        title: 'Checklist title',
+        items: [
+          { id: 0, name: 'Item name 1' },
+          { id: 1, name: 'Item name 2'},
+          { id: 2, name: 'Item name 3'}
+        ],
+      };
+
+      wrapper.find('[id="title"]').at(3).simulate('change',
+        { target: { name: 'title', value: 'Checklist title' } }
+      );
+
+      wrapper.find('#delete-item-button').at(0).simulate('click');
+      
+      wrapper.find('#add-item-button').at(0).simulate('click');
+      wrapper.find('[id="item-0"]').at(3).simulate('change',
+        { target: { name: 'item-0', value: 'Item name 1' } }
+      );
+
+      wrapper.find('#add-item-button').at(0).simulate('click');
+      wrapper.find('[id="item-1"]').at(3).simulate('change',
+        { target: { name: 'item-1', value: 'Item name 2' } }
+      );
+
+      wrapper.find('#add-item-button').at(0).simulate('click');
+      wrapper.find('[id="item-2"]').at(3).simulate('change',
+        { target: { name: 'item-2', value: 'Item name 3' } }
+      );
+
+      expect(wrapper.state()).toEqual(finishedChecklistState);
+    });
   });
 });
