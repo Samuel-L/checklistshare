@@ -198,7 +198,9 @@ exports[`pages: Home rendering matches snapshot 1`] = `
           <button
             className="MuiButtonBase-root-168 MuiButton-root-153 MuiButton-flatPrimary-155 CreateChecklistForm-button-118"
             disabled={false}
+            id="create-list-button"
             onBlur={[Function]}
+            onClick={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
             onKeyUp={[Function]}

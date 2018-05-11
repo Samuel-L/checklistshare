@@ -183,7 +183,9 @@ exports[`pages/Home: CreateChecklistForm should render 1`] = `
       <button
         className="MuiButtonBase-root-54 MuiButton-root-39 MuiButton-flatPrimary-41 CreateChecklistForm-button-4"
         disabled={false}
+        id="create-list-button"
         onBlur={[Function]}
+        onClick={[MockFunction]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}

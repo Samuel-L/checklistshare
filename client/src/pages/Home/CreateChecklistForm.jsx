@@ -78,9 +78,11 @@ const CreateChecklistForm = props => (
       </div>
       <div className={props.classes.buttonDiv}>
         <Button
+          id="create-list-button"
           className={props.classes.button}
           variant="flat"
           color="primary"
+          onClick={props.handleCreateList}
         >
           Create List
         </Button>
@@ -96,6 +98,7 @@ CreateChecklistForm.propTypes = {
   handleItemTextChange: PropTypes.func.isRequired,
   handleAddItem: PropTypes.func.isRequired,
   handleDeleteItem: PropTypes.func.isRequired,
+  handleCreateList: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   items: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,

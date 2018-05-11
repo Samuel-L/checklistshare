@@ -56,6 +56,7 @@ describe('pages: Home', () => {
           { id: 1, name: 'Item name 2'},
           { id: 2, name: 'Item name 3'}
         ],
+        submitConfirmationModalOpen: true,
       };
 
       wrapper.find('[id="title"]').at(3).simulate('change',
@@ -78,6 +79,8 @@ describe('pages: Home', () => {
       wrapper.find('[id="item-2"]').at(3).simulate('change',
         { target: { name: 'item-2', value: 'Item name 3' } }
       );
+
+      wrapper.find('#create-list-button').at(0).simulate('click');
 
       expect(wrapper.state()).toEqual(finishedChecklistState);
     });
