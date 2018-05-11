@@ -2,7 +2,7 @@ import React from 'react';
 
 import CssBaseline from 'material-ui/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
-import lightBlue from 'material-ui/colors/lightBlue';
+import teal from 'material-ui/colors/teal';
 import blueGrey from 'material-ui/colors/blueGrey';
 
 import Header from './shared/Header';
@@ -10,7 +10,7 @@ import HomePage from './pages/Home';
 
 const theme = createMuiTheme({
   palette: {
-    primary: lightBlue,
+    primary: teal,
     secondary: blueGrey,
   },
 });
