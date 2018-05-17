@@ -1,3 +1,5 @@
+import { axiosInstance } from '../utils/axios-helpers';
+
 const ADD_CHECKLIST_REQUEST = 'checklist-adder/ADD_CHECKLIST_REQUEST';
 const ADD_CHECKLIST_SUCCESS = 'checklist-adder/ADD_CHECKLIST_SUCCESS';
 const ADD_CHECKLIST_FAILURE = 'checklist-adder/ADD_CHECKLIST_FAILURE';
@@ -43,4 +45,24 @@ export default (state = initialState, action = {}) => {
       return state;
     }
   }
+};
+
+export const createListOnBackend = (name) => {
+  const promise = new Promise((resolve, reject) => {
+    axiosInstance({
+      method: 'post',
+      url: '/checklists/lists/',
+      data: {
+        name,
+      },
+    })
+      .then((response) => {
+        resolve(response);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+
+  return promise;
 };

@@ -1,4 +1,11 @@
+import MockAdapter from 'axios-mock-adapter';
+import HttpStatus from 'http-status-codes';
+
+import { axiosInstance } from '../../src/utils/axios-helpers';
 import reducer, { actions, initialState } from '../../src/redux-modules/checklist-adder';
+import { createListOnBackend } from '../../src/redux-modules/checklist-adder';
+
+const axiosInstanceMock = new MockAdapter(axiosInstance);
 
 describe('redux-modules: checklist-adder', () => {
   describe('reducer', () => {
@@ -32,6 +39,21 @@ describe('redux-modules: checklist-adder', () => {
       const correctState = { ...initialState };
 
       expect(reducer(undefined, action)).toEqual(correctState);
+    });
+  });
+
+  describe('helpers', () => {
+    describe('createListOnBackend()', () => {
+      it('resolves with response if successful', (done) => {
+        expect.assertions(2);
+        axiosInstanceMock.onPost('/checklists/lists/').reply(HttpStatus.CREATED, { id: 1, url: 'randomurl' });
+
+        return createListOnBackend('name').then((response) => {
+          expect(response.data.id).toEqual(1);
+          expect(response.data.url).toEqual('randomurl');
+          done();
+        });
+      });
     });
   });
 });
