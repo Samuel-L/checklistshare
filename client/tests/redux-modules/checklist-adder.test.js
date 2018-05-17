@@ -42,6 +42,10 @@ describe('redux-modules: checklist-adder', () => {
     });
   });
 
+  beforeEach(() => {
+    axiosInstanceMock.reset();
+  });
+
   describe('helpers', () => {
     describe('createListOnBackend()', () => {
       it('resolves with response if successful', (done) => {
@@ -51,6 +55,16 @@ describe('redux-modules: checklist-adder', () => {
         return createListOnBackend('name').then((response) => {
           expect(response.data.id).toEqual(1);
           expect(response.data.url).toEqual('randomurl');
+          done();
+        });
+      });
+
+      it('rejects with error if unsuccessful', (done) => {
+        expect.assertions(1);
+        axiosInstanceMock.onPost('/checklists/lists/').reply(HttpStatus.INTERNAL_SERVER_ERROR);
+
+        return createListOnBackend('error').catch((error) => {
+          expect(error.response.status).toEqual(HttpStatus.INTERNAL_SERVER_ERROR);
           done();
         });
       });
