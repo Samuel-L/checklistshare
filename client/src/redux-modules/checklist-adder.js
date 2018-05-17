@@ -66,3 +66,42 @@ export const createListOnBackend = (name) => {
 
   return promise;
 };
+
+export const createItemsOnBackend = (listId, items) => {
+  const promise = new Promise((resolve, reject) => {
+    items.map(item => (
+      axiosInstance({
+        method: 'post',
+        url: '/checklists/items/',
+        data: {
+          List: listId,
+          name: item.name,
+        },
+      })
+        .catch((error) => {
+          reject(error);
+        })
+    ), resolve(true));
+  });
+
+  return promise;
+};
+
+export const addChecklist = (name, items) => (dispatch) => {
+  dispatch({ type: ADD_CHECKLIST_REQUEST });
+
+  return createListOnBackend(name)
+    .then((response) => {
+      const listId = response.data.id;
+      createItemsOnBackend(listId, items)
+        .then(() => {
+          dispatch({ type: ADD_CHECKLIST_SUCCESS, payload: response.data.url });
+        })
+        .catch((error) => {
+          dispatch({ type: ADD_CHECKLIST_FAILURE, payload: error.response.status });
+        });
+    })
+    .catch((error) => {
+      dispatch({ type: ADD_CHECKLIST_FAILURE, payload: error.response.status });
+    });
+};
