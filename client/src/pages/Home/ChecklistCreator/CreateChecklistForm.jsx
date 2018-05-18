@@ -12,9 +12,16 @@ const styles = theme => ({
     margin: '5px',
   },
   buttonGroup: {
+    [theme.breakpoints.up('lg')]: {
+      position: 'fixed',
+      right: '10%',
+      top: '20%',
+      width: '150px !important',
+    },
     [theme.breakpoints.up('md')]: {
-      width: '150px',
-      float: 'right',
+      position: 'absolute',
+      bottom: '0',
+      width: '100%',
     },
     [theme.breakpoints.down('sm')]: {
       position: 'absolute',

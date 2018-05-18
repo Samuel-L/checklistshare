@@ -14,7 +14,7 @@ exports[`pages/Home: ChecklistCreator rendering matches snapshot 1`] = `
     </h1>
   </div>
   <div
-    className="MuiGrid-item-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-lg-6-71"
+    className="MuiGrid-item-2 MuiGrid-grid-xs-12-38 MuiGrid-grid-md-12-64 MuiGrid-grid-lg-6-71"
   >
     <form
       id="create-list-form"
