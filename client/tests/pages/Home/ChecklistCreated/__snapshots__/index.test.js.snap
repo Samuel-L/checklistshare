@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pages/Home: ChecklistCreated matches snapshot 1`] = `
+<div
+  className="MuiGrid-container-1 MuiGrid-justify-xs-center-18"
+>
+  <div
+    className="MuiGrid-item-2"
+  >
+    <h1
+      className="MuiTypography-root-91 MuiTypography-headline-96 MuiTypography-gutterBottom-108 MuiTypography-alignCenter-104"
+    >
+      Checklist created!
+    </h1>
+    <aside
+      className="MuiTypography-root-91 MuiTypography-body2-99 MuiTypography-alignCenter-104"
+    >
+      https://www.changemewhenurlishere.com
+      /
+      
+    </aside>
+  </div>
+</div>
+`;
