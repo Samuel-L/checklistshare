@@ -47,13 +47,13 @@ export default (state = initialState, action = {}) => {
   }
 };
 
-export const createListOnBackend = (name) => {
+export const createListOnBackend = (title) => {
   const promise = new Promise((resolve, reject) => {
     axiosInstance({
       method: 'post',
       url: '/checklists/lists/',
       data: {
-        name,
+        title,
       },
     })
       .then((response) => {
@@ -87,10 +87,10 @@ export const createItemsOnBackend = (listId, items) => {
   return promise;
 };
 
-export const addChecklist = (name, items) => (dispatch) => {
+export const addChecklist = (title, items) => (dispatch) => {
   dispatch({ type: ADD_CHECKLIST_REQUEST });
 
-  return createListOnBackend(name)
+  return createListOnBackend(title)
     .then((response) => {
       const listId = response.data.id;
       createItemsOnBackend(listId, items)

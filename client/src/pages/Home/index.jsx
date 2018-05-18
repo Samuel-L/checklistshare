@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
 
+import { addChecklist } from '../../redux-modules/checklist-adder';
 import CreateChecklistForm from './CreateChecklistForm';
 import SubmitConfirmationModal from './SubmitConfirmationModal';
 
@@ -54,7 +57,8 @@ export class Home extends Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log('Form submitted');
+    const { title, items } = this.state;
+    this.props.addChecklist(title, items);
   };
 
   render() {
@@ -90,4 +94,19 @@ export class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => ({
+  adding: state.checklistAdderReducer.adding,
+  added: state.checklistAdderReducer.added,
+  error: state.checklistAdderReducer.error,
+  url: state.checklistAdderReducer.url,
+});
+
+const mapDispatchToProps = dispatch => ({
+  addChecklist: (title, items) => dispatch(addChecklist(title, items)),
+});
+
+Home.propTypes = {
+  addChecklist: PropTypes.func.isRequired,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -6,7 +6,7 @@ import { Home } from '../../../src/pages/Home';
 
 describe('pages: Home', () => {
   describe('rendering', () => {
-    const tree = renderer.create(<Home />).toJSON();
+    const tree = renderer.create(<Home addChecklist={jest.fn()} />).toJSON();
 
     it('matches snapshot', () => {
       expect(tree).toMatchSnapshot(); 
@@ -17,7 +17,7 @@ describe('pages: Home', () => {
     let wrapper;
 
     beforeEach(() => {
-      wrapper = mount(<Home />);
+      wrapper = mount(<Home addChecklist={jest.fn()} />);
     });
 
     it('handles changing the checklist title', () => {
