@@ -8,12 +8,14 @@ import Typography from 'material-ui/Typography';
 import { addChecklist } from '../../../redux-modules/checklist-adder';
 import CreateChecklistForm from './CreateChecklistForm';
 import SubmitConfirmationModal from './SubmitConfirmationModal';
+import SnackError from '../../../shared/SnackError';
 
 export class ChecklistCreator extends Component {
   state = {
     title: '',
     items: [{ id: 0, name: '' }],
     submitConfirmationModalOpen: false,
+    snackError: false,
   };
 
   handleTitleChange = (event) => {
@@ -51,14 +53,45 @@ export class ChecklistCreator extends Component {
     });
   };
 
+  itemsArePopulated = () => {
+    const { items } = this.state;
+    let populated = true;
+    items.forEach((item) => {
+      if (!item.name) {
+        populated = false;
+      }
+    });
+
+    return populated;
+  };
+
   handleSubmitConfirmationModal = () => {
-    this.setState({ submitConfirmationModalOpen: !this.state.submitConfirmationModalOpen });
+    let snackError = false;
+    let openModal = true;
+
+    if (!this.state.title) {
+      snackError = true;
+      openModal = false;
+    }
+    if (!this.itemsArePopulated()) {
+      snackError = true;
+      openModal = false;
+    }
+    if (this.state.submitConfirmationModalOpen) {
+      openModal = false;
+    }
+
+    this.setState({ submitConfirmationModalOpen: openModal, snackError });
   };
 
   handleFormSubmit = (event) => {
     event.preventDefault();
     const { title, items } = this.state;
     this.props.addChecklist(title, items);
+  };
+
+  handleSnackErrorToggle = () => {
+    this.setState({ snackError: !this.state.snackError });
   };
 
   render() {
@@ -89,6 +122,9 @@ export class ChecklistCreator extends Component {
           handleClose={this.handleSubmitConfirmationModal}
           handleModalConfirm={this.handleFormSubmit}
         />
+        <SnackError open={this.state.snackError} handleClose={this.handleSnackErrorToggle}>
+          All fields needs to be filled!
+        </SnackError>
       </React.Fragment>
     );
   }

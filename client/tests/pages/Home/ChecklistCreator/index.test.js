@@ -57,6 +57,7 @@ describe('pages/Home: ChecklistCreator', () => {
           { id: 2, name: 'Item name 3'}
         ],
         submitConfirmationModalOpen: true,
+        snackError: false,
       };
 
       wrapper.find('[id="title"]').at(3).simulate('change',
