@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`pages: Home rendering matches snapshot 1`] = `
+exports[`pages/Home: ChecklistCreator rendering matches snapshot 1`] = `
 <div
   className="MuiGrid-container-1 MuiGrid-align-items-xs-center-9 MuiGrid-justify-xs-center-18"
 >

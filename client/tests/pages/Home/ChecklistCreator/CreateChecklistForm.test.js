@@ -1,9 +1,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import CreateChecklistForm from '../../../src/pages/Home/CreateChecklistForm';
+import CreateChecklistForm from '../../../../src/pages/Home/ChecklistCreator/CreateChecklistForm';
 
-describe('pages/Home: CreateChecklistForm', () => {
+describe('pages/Home/ChecklistCreator: CreateChecklistForm', () => {
   const classes = { textField: '', buttonGroup: '', buttonDiv: '', button: '' };
   const items = [{ id: 0, item: '' }];
   const tree = renderer.create(

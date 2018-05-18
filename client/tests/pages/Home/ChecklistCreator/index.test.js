@@ -2,11 +2,11 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
-import { Home } from '../../../src/pages/Home';
+import { ChecklistCreator } from '../../../../src/pages/Home/ChecklistCreator';
 
-describe('pages: Home', () => {
+describe('pages/Home: ChecklistCreator', () => {
   describe('rendering', () => {
-    const tree = renderer.create(<Home addChecklist={jest.fn()} />).toJSON();
+    const tree = renderer.create(<ChecklistCreator addChecklist={jest.fn()} />).toJSON();
 
     it('matches snapshot', () => {
       expect(tree).toMatchSnapshot(); 
@@ -17,7 +17,7 @@ describe('pages: Home', () => {
     let wrapper;
 
     beforeEach(() => {
-      wrapper = mount(<Home addChecklist={jest.fn()} />);
+      wrapper = mount(<ChecklistCreator addChecklist={jest.fn()} />);
     });
 
     it('handles changing the checklist title', () => {

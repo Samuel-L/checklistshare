@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`pages/Home: ChecklistItem should render 1`] = `
+exports[`pages/Home/ChecklistCreator: ChecklistItem should render 1`] = `
 <div
   className="ChecklistItem-root-1"
 >

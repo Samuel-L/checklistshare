@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`pages/Home: CreateChecklistForm should render 1`] = `
+exports[`pages/Home/ChecklistCreator: CreateChecklistForm should render 1`] = `
 <form
   id="create-list-form"
   onSubmit={[MockFunction]}
