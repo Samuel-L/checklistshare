@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
-import Home from '../../../src/pages/Home';
+import { Home } from '../../../src/pages/Home';
 
 describe('pages: Home', () => {
   describe('rendering', () => {
