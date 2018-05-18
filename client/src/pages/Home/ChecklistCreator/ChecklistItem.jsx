@@ -42,7 +42,7 @@ const ChecklistItem = props => (
       className={props.classes.icon}
       id="delete-item-button"
       aria-label="delete"
-      onClick={props.handleItemDelete(props.idx)}
+      onClick={() => { props.handleItemDelete(props.idx); }}
       variant="raised"
     >
       <DeleteIcon />

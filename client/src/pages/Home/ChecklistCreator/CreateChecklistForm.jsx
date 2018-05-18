@@ -12,9 +12,16 @@ const styles = theme => ({
     margin: '5px',
   },
   buttonGroup: {
+    [theme.breakpoints.up('lg')]: {
+      position: 'fixed',
+      right: '10%',
+      top: '20%',
+      width: '150px !important',
+    },
     [theme.breakpoints.up('md')]: {
-      width: '150px',
-      float: 'right',
+      position: 'absolute',
+      bottom: '0',
+      width: '100%',
     },
     [theme.breakpoints.down('sm')]: {
       position: 'absolute',
@@ -44,36 +51,45 @@ const CreateChecklistForm = props => (
   >
     <TextField
       required
-      id="name"
+      id="title"
       label="Title"
       value={props.title}
-      onChange={props.handleTextFieldChange}
+      onChange={props.handleTitleChange}
       helperText="Please give your checklist a title"
       fullWidth
       margin="normal"
       className={props.classes.textField}
     />
-    <ChecklistItem
-      item={{ id: 0, name: '' }}
-      idx={0}
-      handleItemTextChange={() => {}}
-      handleItemDelete={() => {}}
-    />
+    {
+      props.items.map((item, idx) => (
+        <ChecklistItem
+          key={item.id}
+          item={item}
+          idx={idx}
+          handleItemTextChange={props.handleItemTextChange}
+          handleItemDelete={props.handleDeleteItem}
+        />
+      ))
+    }
     <div className={props.classes.buttonGroup}>
       <div className={props.classes.buttonDiv}>
         <Button
+          id="add-item-button"
           className={props.classes.button}
           variant="flat"
           color="primary"
+          onClick={props.handleAddItem}
         >
           Add Item
         </Button>
       </div>
       <div className={props.classes.buttonDiv}>
         <Button
+          id="create-list-button"
           className={props.classes.button}
           variant="flat"
           color="primary"
+          onClick={props.handleCreateList}
         >
           Create List
         </Button>
@@ -85,8 +101,16 @@ const CreateChecklistForm = props => (
 CreateChecklistForm.propTypes = {
   classes: PropTypes.objectOf(PropTypes.string).isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  handleTextFieldChange: PropTypes.func.isRequired,
+  handleTitleChange: PropTypes.func.isRequired,
+  handleItemTextChange: PropTypes.func.isRequired,
+  handleAddItem: PropTypes.func.isRequired,
+  handleDeleteItem: PropTypes.func.isRequired,
+  handleCreateList: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
+  items: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+  })).isRequired,
 };
 
 CreateChecklistForm.defaultProps = {};

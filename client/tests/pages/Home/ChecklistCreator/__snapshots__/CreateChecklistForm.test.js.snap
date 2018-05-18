@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`pages/Home: CreateChecklistForm should render 1`] = `
+exports[`pages/Home/ChecklistCreator: CreateChecklistForm should render 1`] = `
 <form
   id="create-list-form"
   onSubmit={[MockFunction]}
 >
   <div
-    aria-describedby="name-helper-text"
+    aria-describedby="title-helper-text"
     className="MuiFormControl-root-5 MuiFormControl-marginNormal-6 MuiFormControl-fullWidth-8 CreateChecklistForm-textField-1"
     onBlur={[Function]}
     onFocus={[Function]}
@@ -14,7 +14,7 @@ exports[`pages/Home: CreateChecklistForm should render 1`] = `
     <label
       className="MuiFormLabel-root-14 MuiInputLabel-root-9 MuiInputLabel-formControl-10 MuiInputLabel-animated-13 MuiInputLabel-shrink-12"
       data-shrink={true}
-      htmlFor="name"
+      htmlFor="title"
     >
       Title
       <span
@@ -34,7 +34,7 @@ exports[`pages/Home: CreateChecklistForm should render 1`] = `
         className="MuiInput-input-27"
         defaultValue={undefined}
         disabled={false}
-        id="name"
+        id="title"
         name={undefined}
         onBlur={[Function]}
         onChange={[Function]}
@@ -51,7 +51,7 @@ exports[`pages/Home: CreateChecklistForm should render 1`] = `
     </div>
     <p
       className="MuiFormHelperText-root-32"
-      id="name-helper-text"
+      id="title-helper-text"
     >
       Please give your checklist a title
     </p>
@@ -100,7 +100,7 @@ exports[`pages/Home: CreateChecklistForm should render 1`] = `
           required={true}
           rows={undefined}
           type="text"
-          value=""
+          value={undefined}
         />
       </div>
     </div>
@@ -110,7 +110,7 @@ exports[`pages/Home: CreateChecklistForm should render 1`] = `
       disabled={false}
       id="delete-item-button"
       onBlur={[Function]}
-      onClick={undefined}
+      onClick={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
@@ -152,7 +152,9 @@ exports[`pages/Home: CreateChecklistForm should render 1`] = `
       <button
         className="MuiButtonBase-root-54 MuiButton-root-39 MuiButton-flatPrimary-41 CreateChecklistForm-button-4"
         disabled={false}
+        id="add-item-button"
         onBlur={[Function]}
+        onClick={[MockFunction]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
@@ -181,7 +183,9 @@ exports[`pages/Home: CreateChecklistForm should render 1`] = `
       <button
         className="MuiButtonBase-root-54 MuiButton-root-39 MuiButton-flatPrimary-41 CreateChecklistForm-button-4"
         disabled={false}
+        id="create-list-button"
         onBlur={[Function]}
+        onClick={[MockFunction]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
