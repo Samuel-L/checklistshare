@@ -7,6 +7,40 @@ import { CircularProgress } from 'material-ui/Progress';
 
 import clientBaseURL from '../../../utils/client-helpers';
 
+const SuccessfulCreation = props => (
+  <Grid item>
+    <Typography
+      variant="headline"
+      align="center"
+      gutterBottom
+    >
+      Checklist created!
+    </Typography>
+    <Typography
+      variant="body2"
+      align="center"
+    >
+      {clientBaseURL}/{props.url}
+    </Typography>
+  </Grid>
+);
+
+SuccessfulCreation.propTypes = {
+  url: PropTypes.string.isRequired,
+};
+
+const FailedCreation = () => (
+  <Grid item>
+    <Typography
+      variant="headline"
+      align="center"
+      gutterBottom
+    >
+      Something went wrong on our end. Please try again.
+    </Typography>
+  </Grid>
+);
+
 const ChecklistCreated = props => (
   <Grid container justify="center">
     { props.adding && !props.added
@@ -15,21 +49,9 @@ const ChecklistCreated = props => (
           <CircularProgress size={70} />
         </Grid>
       :
-        <Grid item>
-          <Typography
-            variant="headline"
-            align="center"
-            gutterBottom
-          >
-            Checklist created!
-          </Typography>
-          <Typography
-            variant="body2"
-            align="center"
-          >
-            {clientBaseURL}/{props.url}
-          </Typography>
-        </Grid>
+        [
+          (props.added && props.url ? <SuccessfulCreation key="0" url={props.url} /> : <FailedCreation key="0" />),
+        ]
     }
   </Grid>
 );

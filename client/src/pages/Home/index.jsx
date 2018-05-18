@@ -7,7 +7,7 @@ import ChecklistCreatedComponent from './ChecklistCreated';
 
 const Home = props => (
   <div>
-    { !props.adding && !props.added
+    { !props.adding && !props.added && !props.error
       ?
         <ChecklistCreatorComponent />
       :
@@ -23,6 +23,7 @@ const Home = props => (
 const mapStateToProps = state => ({
   adding: state.checklistAdderReducer.adding,
   added: state.checklistAdderReducer.added,
+  error: state.checklistAdderReducer.error,
   url: state.checklistAdderReducer.url,
 });
 
@@ -31,12 +32,14 @@ const mapDispatchToProps = () => ({});
 Home.propTypes = {
   adding: PropTypes.bool,
   added: PropTypes.bool,
+  error: PropTypes.number,
   url: PropTypes.string,
 };
 
 Home.defaultProps = {
   adding: false,
   added: false,
+  error: null,
   url: '',
 };
 

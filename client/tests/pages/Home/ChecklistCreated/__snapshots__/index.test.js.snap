@@ -10,15 +10,8 @@ exports[`pages/Home: ChecklistCreated matches snapshot 1`] = `
     <h1
       className="MuiTypography-root-91 MuiTypography-headline-96 MuiTypography-gutterBottom-108 MuiTypography-alignCenter-104"
     >
-      Checklist created!
+      Something went wrong on our end. Please try again.
     </h1>
-    <aside
-      className="MuiTypography-root-91 MuiTypography-body2-99 MuiTypography-alignCenter-104"
-    >
-      https://www.changemewhenurlishere.com
-      /
-      
-    </aside>
   </div>
 </div>
 `;
