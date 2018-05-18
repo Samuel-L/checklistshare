@@ -94,12 +94,7 @@ export class ChecklistCreator extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  adding: state.checklistAdderReducer.adding,
-  added: state.checklistAdderReducer.added,
-  error: state.checklistAdderReducer.error,
-  url: state.checklistAdderReducer.url,
-});
+const mapStateToProps = () => ({});
 
 const mapDispatchToProps = dispatch => ({
   addChecklist: (title, items) => dispatch(addChecklist(title, items)),
