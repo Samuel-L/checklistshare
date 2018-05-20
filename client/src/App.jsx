@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 
 import CssBaseline from 'material-ui/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
@@ -20,7 +21,7 @@ const App = () => (
     <div className="app-container">
       <CssBaseline />
       <Header />
-      <HomePage />
+      <Route exact path="/" component={HomePage} />
     </div>
   </MuiThemeProvider>
 );
