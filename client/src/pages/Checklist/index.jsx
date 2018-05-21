@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { fetchChecklist } from '../../redux-modules/checklist-fetcher';
 
 export class Checklist extends Component {
-  componentWillMount() {
+  componentDidMount() {
     let url = this.props.location.pathname;
     url = url.substring(1, url.length); // remove '/' from start of url
     this.props.fetchChecklist(url);
