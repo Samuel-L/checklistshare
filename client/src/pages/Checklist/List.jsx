@@ -8,6 +8,9 @@ import Checkbox from 'material-ui/Checkbox';
 import List, { ListItem, ListItemText } from 'material-ui/List';
 
 const styles = theme => ({
+  checklistTitle: {
+    marginTop: '20px',
+  },
   listGridRoot: {
     width: '100%',
     maxWidth: 360,
@@ -22,6 +25,7 @@ const ListComponent = props => (
   <Grid container justify="center">
     <Grid item xs={12}>
       <Typography
+        className={props.classes.checklistTitle}
         variant="headline"
         align="center"
         gutterBottom

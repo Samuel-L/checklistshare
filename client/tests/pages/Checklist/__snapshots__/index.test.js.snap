@@ -3,25 +3,25 @@
 exports[`pages: Checklist rendering matches snapshot 1`] = `
 <div>
   <div
-    className="MuiGrid-container-3 MuiGrid-justify-xs-center-20"
+    className="MuiGrid-container-4 MuiGrid-justify-xs-center-21"
   >
     <div
-      className="MuiGrid-item-4 MuiGrid-grid-xs-12-40"
+      className="MuiGrid-item-5 MuiGrid-grid-xs-12-41"
     >
       <h1
-        className="MuiTypography-root-93 MuiTypography-headline-98 MuiTypography-gutterBottom-110 MuiTypography-alignCenter-106"
+        className="MuiTypography-root-94 MuiTypography-headline-99 MuiTypography-gutterBottom-111 MuiTypography-alignCenter-107 ListComponent-checklistTitle-1"
       >
         
       </h1>
     </div>
     <div
-      className="MuiGrid-item-4 ListComponent-listGridRoot-1"
+      className="MuiGrid-item-5 ListComponent-listGridRoot-2"
     >
       <ul
-        className="MuiList-root-117 MuiList-padding-118"
+        className="MuiList-root-118 MuiList-padding-119"
       >
         <div
-          className="MuiButtonBase-root-131 MuiListItem-root-121 MuiListItem-dense-125 MuiListItem-gutters-128 MuiListItem-button-129"
+          className="MuiButtonBase-root-132 MuiListItem-root-122 MuiListItem-dense-126 MuiListItem-gutters-129 MuiListItem-button-130"
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -37,7 +37,7 @@ exports[`pages: Checklist rendering matches snapshot 1`] = `
           tabIndex="0"
         >
           <span
-            className="MuiButtonBase-root-131 MuiIconButton-root-143 MuiSwitchBase-root-139 MuiCheckbox-root-134 MuiCheckbox-colorSecondary-138 ListComponent-checkbox-2"
+            className="MuiButtonBase-root-132 MuiIconButton-root-144 MuiSwitchBase-root-140 MuiCheckbox-root-135 MuiCheckbox-colorSecondary-139 ListComponent-checkbox-3"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -52,11 +52,11 @@ exports[`pages: Checklist rendering matches snapshot 1`] = `
             tabIndex={null}
           >
             <span
-              className="MuiIconButton-label-148"
+              className="MuiIconButton-label-149"
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-149"
+                className="MuiSvgIcon-root-150"
                 color={undefined}
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -67,7 +67,7 @@ exports[`pages: Checklist rendering matches snapshot 1`] = `
               </svg>
               <input
                 checked={false}
-                className="MuiSwitchBase-input-142"
+                className="MuiSwitchBase-input-143"
                 disabled={undefined}
                 id={undefined}
                 name={undefined}
@@ -79,10 +79,10 @@ exports[`pages: Checklist rendering matches snapshot 1`] = `
             </span>
           </span>
           <div
-            className="MuiListItemText-root-155 MuiListItemText-dense-157"
+            className="MuiListItemText-root-156 MuiListItemText-dense-158"
           />
           <span
-            className="MuiTouchRipple-root-161"
+            className="MuiTouchRipple-root-162"
           />
         </div>
       </ul>
