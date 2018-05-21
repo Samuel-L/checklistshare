@@ -16,7 +16,14 @@ export const initialState = {
   fetching: false,
   fetched: false,
   error: 0,
-  checklist: {},
+  checklist: {
+    id: 0,
+    title: '',
+    url: '',
+    items: [
+      { id: 0, List: 0, name: '' },
+    ],
+  },
 };
 
 export default (state = initialState, action = {}) => {
