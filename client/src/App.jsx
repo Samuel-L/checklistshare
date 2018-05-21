@@ -8,6 +8,7 @@ import blueGrey from 'material-ui/colors/blueGrey';
 
 import Header from './shared/Header';
 import HomePage from './pages/Home';
+import ChecklistPage from './pages/Checklist';
 
 const theme = createMuiTheme({
   palette: {
@@ -22,6 +23,7 @@ const App = () => (
       <CssBaseline />
       <Header />
       <Route exact path="/" component={HomePage} />
+      <Route exact path="/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})" component={ChecklistPage} />
     </div>
   </MuiThemeProvider>
 );
