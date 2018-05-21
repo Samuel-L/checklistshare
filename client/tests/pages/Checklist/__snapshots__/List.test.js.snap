@@ -2,7 +2,7 @@
 
 exports[`pages/Checklist: List matches snapshot 1`] = `
 <div
-  className="MuiGrid-container-3"
+  className="MuiGrid-container-3 MuiGrid-justify-xs-center-20"
 >
   <div
     className="MuiGrid-item-4 MuiGrid-grid-xs-12-40"

@@ -19,7 +19,7 @@ const styles = theme => ({
 });
 
 const ListComponent = props => (
-  <Grid container>
+  <Grid container justify="center">
     <Grid item xs={12}>
       <Typography
         variant="headline"
