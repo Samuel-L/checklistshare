@@ -1,4 +1,17 @@
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import MockAdapter from 'axios-mock-adapter';
+import HttpStatus from 'http-status-codes';
+
+import { axiosInstance } from '../../src/utils/axios-helpers';
 import reducer, { actions, initialState } from '../../src/redux-modules/checklist-fetcher';
+import { fetchChecklist } from '../../src/redux-modules/checklist-fetcher';
+
+const middlewares = [ thunk ];
+const mockStore = configureMockStore(middlewares);
+const store = mockStore(initialState);
+
+const axiosInstanceMock = new MockAdapter(axiosInstance);
 
 describe('redux-modules: checklist-fetcher', () => {
   describe('reducer', () => {
@@ -33,6 +46,47 @@ describe('redux-modules: checklist-fetcher', () => {
       const correctState = { ...initialState };
 
       expect(reducer(undefined, action)).toEqual(correctState);
+    });
+  });
+
+  describe('action creators', () => {
+    describe('fetchChecklist()', () => {
+      const workingURL = 'workingUrl';
+      const failingURL = 'failingUrl';
+
+      beforeEach(() => {
+        axiosInstanceMock
+          .onGet(`/checklists/checklist/${workingURL}/`).reply(HttpStatus.OK, { 'title': 'checklist title' })
+          .onGet(`/checklists/checklist/${failingURL}/`).reply(HttpStatus.NOT_FOUND);
+      });
+
+      afterEach(() => {
+        store.clearActions();
+      });
+
+      it('created FETCH_CHECKLIST_REQUEST', () => {
+        const expectedAction = { type: actions.FETCH_CHECKLIST_REQUEST };
+
+        return store.dispatch(fetchChecklist(workingURL)).then(() => {
+          expect(store.getActions()[0]).toEqual(expectedAction);
+        });
+      });
+
+      it('creates FETCH_CHECKLIST_SUCCESS when successful', () => {
+        const expectedAction = { type: actions.FETCH_CHECKLIST_SUCCESS, payload: { 'title': 'checklist title' }}; 
+
+        return store.dispatch(fetchChecklist(workingURL)).then(() => {
+          expect(store.getActions()[1]).toEqual(expectedAction);
+        });
+      });
+
+      it('creates FETCH_CHECKLIST_FAILURE when unsuccessful', () => {
+        const expectedAction = { type: actions.FETCH_CHECKLIST_FAILURE, payload: HttpStatus.NOT_FOUND };
+
+        return store.dispatch(fetchChecklist(failingURL)).then(() => {
+          expect(store.getActions()[1]).toEqual(expectedAction);
+        });
+      });
     });
   });
 });

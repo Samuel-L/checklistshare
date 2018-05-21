@@ -46,3 +46,18 @@ export default (state = initialState, action = {}) => {
     }
   }
 };
+
+export const fetchChecklist = url => (dispatch) => {
+  dispatch({ type: FETCH_CHECKLIST_REQUEST });
+
+  return axiosInstance({
+    method: 'get',
+    url: `/checklists/checklist/${url}/`,
+  })
+    .then((response) => {
+      dispatch({ type: FETCH_CHECKLIST_SUCCESS, payload: response.data });
+    })
+    .catch((error) => {
+      dispatch({ type: FETCH_CHECKLIST_FAILURE, payload: error.response.status });
+    });
+};
