@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pages: Checklist rendering matches snapshot 1`] = `
+<div>
+  !error show checklist else show checklist not found
+</div>
+`;
