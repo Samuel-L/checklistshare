@@ -3,25 +3,25 @@
 exports[`pages: Checklist rendering matches snapshot 1`] = `
 <div>
   <div
-    className="MuiGrid-container-4 MuiGrid-justify-xs-center-21"
+    className="MuiGrid-container-5 MuiGrid-justify-xs-center-22"
   >
     <div
-      className="MuiGrid-item-5 MuiGrid-grid-xs-12-41"
+      className="MuiGrid-item-6 MuiGrid-grid-xs-12-42"
     >
       <h1
-        className="MuiTypography-root-94 MuiTypography-headline-99 MuiTypography-gutterBottom-111 MuiTypography-alignCenter-107 ListComponent-checklistTitle-1"
+        className="MuiTypography-root-95 MuiTypography-headline-100 MuiTypography-gutterBottom-112 MuiTypography-alignCenter-108 ListComponent-checklistTitle-1"
       >
         
       </h1>
     </div>
     <div
-      className="MuiGrid-item-5 ListComponent-listGridRoot-2"
+      className="MuiGrid-item-6 ListComponent-listGridRoot-2"
     >
       <ul
-        className="MuiList-root-118 MuiList-padding-119"
+        className="MuiList-root-119 MuiList-padding-120"
       >
         <div
-          className="MuiButtonBase-root-132 MuiListItem-root-122 MuiListItem-dense-126 MuiListItem-gutters-129 MuiListItem-button-130"
+          className="MuiButtonBase-root-133 MuiListItem-root-123 MuiListItem-dense-127 MuiListItem-gutters-130 MuiListItem-button-131"
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -37,7 +37,7 @@ exports[`pages: Checklist rendering matches snapshot 1`] = `
           tabIndex="0"
         >
           <span
-            className="MuiButtonBase-root-132 MuiIconButton-root-144 MuiSwitchBase-root-140 MuiCheckbox-root-135 MuiCheckbox-colorSecondary-139 ListComponent-checkbox-3"
+            className="MuiButtonBase-root-133 MuiIconButton-root-145 MuiSwitchBase-root-141 MuiCheckbox-root-136 MuiCheckbox-colorSecondary-140 ListComponent-checkbox-3"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -52,11 +52,11 @@ exports[`pages: Checklist rendering matches snapshot 1`] = `
             tabIndex={null}
           >
             <span
-              className="MuiIconButton-label-149"
+              className="MuiIconButton-label-150"
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-150"
+                className="MuiSvgIcon-root-151"
                 color={undefined}
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -67,7 +67,7 @@ exports[`pages: Checklist rendering matches snapshot 1`] = `
               </svg>
               <input
                 checked={false}
-                className="MuiSwitchBase-input-143"
+                className="MuiSwitchBase-input-144"
                 disabled={undefined}
                 id={undefined}
                 name={undefined}
@@ -79,13 +79,43 @@ exports[`pages: Checklist rendering matches snapshot 1`] = `
             </span>
           </span>
           <div
-            className="MuiListItemText-root-156 MuiListItemText-dense-158"
+            className="MuiListItemText-root-157 MuiListItemText-dense-159"
           />
           <span
-            className="MuiTouchRipple-root-162"
+            className="MuiTouchRipple-root-163"
           />
         </div>
       </ul>
+    </div>
+    <div
+      className="MuiGrid-item-6 MuiGrid-grid-xs-12-42"
+    >
+      <button
+        className="MuiButtonBase-root-133 MuiButton-root-170 MuiButton-raised-175 MuiButton-raisedPrimary-176 ListComponent-button-4"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiButton-label-171"
+        >
+          Edit List
+        </span>
+        <span
+          className="MuiTouchRipple-root-163"
+        />
+      </button>
     </div>
   </div>
 </div>

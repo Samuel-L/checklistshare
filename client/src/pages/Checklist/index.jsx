@@ -8,6 +8,7 @@ import List from './List';
 export class Checklist extends Component {
   state = {
     checked: [],
+    editorMode: false,
   };
 
   componentDidMount() {
@@ -30,14 +31,24 @@ export class Checklist extends Component {
     this.setState({ checked: newChecked });
   };
 
+  toggleEditMode = () => {
+    this.setState({ editorMode: !this.state.editorMode });
+  };
+
   render() {
     return (
       <div>
-        <List
-          checklist={this.props.checklist}
-          toggleList={this.toggleList}
-          checked={this.state.checked}
-        />
+        { !this.state.editorMode
+          ?
+            <List
+              checklist={this.props.checklist}
+              toggleList={this.toggleList}
+              checked={this.state.checked}
+              toggleEditMode={this.toggleEditMode}
+            />
+          :
+            <div>Editor mode entered.</div>
+        }
       </div>
     );
   }

@@ -17,7 +17,13 @@ describe('pages/Checklist: List', () => {
   const checked = [0];
 
   const tree = renderer.create(
-    <List classes={classes} checklist={checklist} toggleList={toggleList} checked={checked} />
+    <List
+      classes={classes}
+      checklist={checklist}
+      toggleList={toggleList}
+      checked={checked}
+      toggleEditMode={jest.fn()}
+    />
   ).toJSON();
 
   it('matches snapshot', () => {

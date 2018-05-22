@@ -6,6 +6,7 @@ import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
 import Checkbox from 'material-ui/Checkbox';
 import List, { ListItem, ListItemText } from 'material-ui/List';
+import Button from 'material-ui/Button';
 
 const styles = theme => ({
   checklistTitle: {
@@ -18,6 +19,9 @@ const styles = theme => ({
   },
   checkbox: {
     color: '#57c557 !important',
+  },
+  button: {
+    width: '100%',
   },
 });
 
@@ -55,6 +59,16 @@ const ListComponent = props => (
         }
       </List>
     </Grid>
+    <Grid item xs={12}>
+      <Button
+        variant="raised"
+        color="primary"
+        className={props.classes.button}
+        onClick={props.toggleEditMode}
+      >
+        Edit List
+      </Button>
+    </Grid>
   </Grid>
 );
 
@@ -72,6 +86,7 @@ ListComponent.propTypes = {
   }).isRequired,
   toggleList: PropTypes.func.isRequired,
   checked: PropTypes.arrayOf(PropTypes.number).isRequired,
+  toggleEditMode: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(ListComponent);
