@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import CreateChecklistForm from '../../../../src/pages/Home/ChecklistCreator/CreateChecklistForm';
+import CreateChecklistForm from '../../../src/shared/ChecklistCreator/CreateChecklistForm';
 
 describe('pages/Home/ChecklistCreator: CreateChecklistForm', () => {
   const classes = { textField: '', buttonGroup: '', buttonDiv: '', button: '' };
@@ -19,8 +19,8 @@ describe('pages/Home/ChecklistCreator: CreateChecklistForm', () => {
       items={items}
     />
   ).toJSON();
-  
+
   it('should render', () => {
-    expect(tree).toMatchSnapshot(); 
+    expect(tree).toMatchSnapshot();
   });
 });

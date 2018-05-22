@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import ChecklistCreatorComponent from './ChecklistCreator';
+import ChecklistCreatorComponent from '../../shared/ChecklistCreator';
 import ChecklistCreatedComponent from './ChecklistCreated';
 
 const Home = props => (

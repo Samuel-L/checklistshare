@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
 
-import { addChecklist } from '../../../redux-modules/checklist-adder';
+import { addChecklist } from '../../redux-modules/checklist-adder';
 import CreateChecklistForm from './CreateChecklistForm';
 import SubmitConfirmationModal from './SubmitConfirmationModal';
-import SnackError from '../../../shared/SnackError';
+import SnackError from '../SnackError';
 
 export class ChecklistCreator extends Component {
   state = {

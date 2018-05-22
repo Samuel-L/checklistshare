@@ -2,14 +2,14 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
-import { ChecklistCreator } from '../../../../src/pages/Home/ChecklistCreator';
+import { ChecklistCreator } from '../../../src/shared/ChecklistCreator';
 
 describe('pages/Home: ChecklistCreator', () => {
   describe('rendering', () => {
     const tree = renderer.create(<ChecklistCreator addChecklist={jest.fn()} />).toJSON();
 
     it('matches snapshot', () => {
-      expect(tree).toMatchSnapshot(); 
+      expect(tree).toMatchSnapshot();
     });
   });
 
@@ -37,7 +37,7 @@ describe('pages/Home: ChecklistCreator', () => {
     });
 
     it('handles adding new items', () => {
-      expect(wrapper.state('items').length).toEqual(1); 
+      expect(wrapper.state('items').length).toEqual(1);
       wrapper.find('#add-item-button').at(0).simulate('click');
       expect(wrapper.state('items').length).toEqual(2);
     });
@@ -65,7 +65,7 @@ describe('pages/Home: ChecklistCreator', () => {
       );
 
       wrapper.find('#delete-item-button').at(0).simulate('click');
-      
+
       wrapper.find('#add-item-button').at(0).simulate('click');
       wrapper.find('[id="item-0"]').at(3).simulate('change',
         { target: { name: 'item-0', value: 'Item name 1' } }
