@@ -130,6 +130,7 @@ export class ChecklistCreator extends Component {
               handleCreateList={this.handleSubmitConfirmationModal}
               title={this.state.title}
               items={this.state.items}
+              editMode={this.props.editMode}
             />
           </Grid>
         </Grid>

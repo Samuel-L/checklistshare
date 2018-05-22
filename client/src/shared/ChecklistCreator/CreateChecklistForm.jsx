@@ -91,7 +91,7 @@ const CreateChecklistForm = props => (
           color="primary"
           onClick={props.handleCreateList}
         >
-          Create List
+          { props.editMode ? 'Update List' : 'Create List' }
         </Button>
       </div>
     </div>
