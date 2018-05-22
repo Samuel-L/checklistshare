@@ -50,6 +50,7 @@ describe('pages/Home: ChecklistCreator', () => {
 
     it('handles creating an entire checklist', () => {
       const finishedChecklistState = {
+        id: 0,
         title: 'Checklist title',
         items: [
           { id: 0, name: 'Item name 1' },

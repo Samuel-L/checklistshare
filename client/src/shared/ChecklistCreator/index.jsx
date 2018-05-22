@@ -12,10 +12,22 @@ import SnackError from '../SnackError';
 
 export class ChecklistCreator extends Component {
   state = {
+    id: 0,
     title: '',
     items: [{ id: 0, name: '' }],
     submitConfirmationModalOpen: false,
     snackError: false,
+  };
+
+  componentDidMount = () => {
+    if (this.props.editMode) {
+      const { checklist } = this.props;
+      this.setState({
+        id: checklist.id,
+        title: checklist.title,
+        items: checklist.items,
+      });
+    }
   };
 
   handleTitleChange = (event) => {
@@ -87,7 +99,11 @@ export class ChecklistCreator extends Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
     const { title, items } = this.state;
-    this.props.addChecklist(title, items);
+    if (this.props.editMode) {
+      // editChecklist()
+    } else {
+      this.props.addChecklist(title, items);
+    }
   };
 
   handleSnackErrorToggle = () => {
@@ -134,10 +150,34 @@ const mapStateToProps = () => ({});
 
 const mapDispatchToProps = dispatch => ({
   addChecklist: (title, items) => dispatch(addChecklist(title, items)),
+  // editChecklist
 });
 
 ChecklistCreator.propTypes = {
+  editMode: PropTypes.bool,
   addChecklist: PropTypes.func.isRequired,
+  checklist: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    url: PropTypes.string,
+    items: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number,
+      List: PropTypes.number,
+      name: PropTypes.string,
+    })),
+  }),
+};
+
+ChecklistCreator.defaultProps = {
+  editMode: false,
+  checklist: {
+    id: 0,
+    title: '',
+    url: '',
+    items: [
+      { id: 0, List: 0, name: '' },
+    ],
+  },
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChecklistCreator);

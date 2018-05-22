@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import { fetchChecklist } from '../../redux-modules/checklist-fetcher';
 import List from './List';
+import ChecklistCreatorComponent from '../../shared/ChecklistCreator';
 
 export class Checklist extends Component {
   state = {
@@ -47,7 +48,8 @@ export class Checklist extends Component {
               toggleEditMode={this.toggleEditMode}
             />
           :
-            <div>Editor mode entered.</div>
+            // notice about being in edit mode
+            <ChecklistCreatorComponent editMode checklist={this.props.checklist} />
         }
       </div>
     );
