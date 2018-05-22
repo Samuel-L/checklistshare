@@ -117,7 +117,7 @@ export class ChecklistCreator extends Component {
         <Grid container justify="center" alignItems="center">
           <Grid item xs={12}>
             <Typography variant="display1" align="center">
-              Create checklist
+              { this.props.editMode ? 'Edit checklist' : 'Create checklist' }
             </Typography>
           </Grid>
           <Grid item xs={12} md={12} lg={6}>
