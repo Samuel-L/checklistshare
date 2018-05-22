@@ -18,16 +18,6 @@ const styles = theme => ({
       top: '20%',
       width: '150px !important',
     },
-    [theme.breakpoints.up('md')]: {
-      position: 'absolute',
-      bottom: '0',
-      width: '100%',
-    },
-    [theme.breakpoints.down('sm')]: {
-      position: 'absolute',
-      bottom: '0',
-      width: '100%',
-    },
   },
   buttonDiv: {
     width: '100%',
