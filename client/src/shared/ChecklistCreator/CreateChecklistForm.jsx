@@ -111,8 +111,11 @@ CreateChecklistForm.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
   })).isRequired,
+  editMode: PropTypes.bool,
 };
 
-CreateChecklistForm.defaultProps = {};
+CreateChecklistForm.defaultProps = {
+  editMode: false,
+};
 
 export default withStyles(styles)(CreateChecklistForm);
