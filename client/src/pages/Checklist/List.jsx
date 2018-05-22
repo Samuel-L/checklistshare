@@ -22,6 +22,7 @@ const styles = theme => ({
   },
   button: {
     width: '100%',
+    backgroundColor: theme.palette.primary.A700,
   },
 });
 
