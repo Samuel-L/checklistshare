@@ -90,7 +90,7 @@ describe('backendHelpers', () => {
     });
   });
 
-  describe('getItemsToBeDeleted()', () => {
+  describe('deleteItemsFromBackend()', () => {
     it('resolves with true if successful', (done) => {
       expect.assertions(1);
       axiosInstanceMock.onDelete('/checklists/items/1/').reply(HttpStatus.NO_CONTENT);
