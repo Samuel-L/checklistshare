@@ -20,7 +20,7 @@ describe('backendHelpers', () => {
     axiosInstanceMock.reset();
   });
 
-  describe.skip('createListOnBackend()', () => {
+  describe('createListOnBackend()', () => {
     it('resolves with response if successful', (done) => {
       expect.assertions(2);
       axiosInstanceMock.onPost('/checklists/lists/').reply(HttpStatus.CREATED, { id: 1, url: 'randomurl' });
