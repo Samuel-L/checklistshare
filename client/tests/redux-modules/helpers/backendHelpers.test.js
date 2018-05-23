@@ -8,6 +8,7 @@ import {
   getItemsToBeDeleted,
   deleteItemsFromBackend,
   getItemsToBePatched,
+  getItemsToBeAdded,
 } from '../../../src/redux-modules/helpers/backendHelpers';
 
 const axiosInstanceMock = new MockAdapter(axiosInstance);
@@ -71,6 +72,7 @@ describe('backendHelpers', () => {
     ]};
     const editedChecklist = { items: [
       { id: 0, List: 0, name: 'item 1' },
+      { id: 5, List: 0, name: 'item 4' },
     ]};
     const items = getItemsToBeDeleted(unEditedChecklist, editedChecklist);
 
@@ -142,6 +144,33 @@ describe('backendHelpers', () => {
 
       expect(items.length).toEqual(0);
     });
-   
+  });
+
+  describe('getItemsToBeAdded()', () => {
+     const unEditedChecklist = { items: [
+      { id: 0, List: 0, name: 'item 1' },
+      { id: 1, List: 0, name: 'item 2' },
+      { id: 2, List: 0, name: 'item 3' },
+    ]};
+    const editedChecklist = { items: [
+      { id: 0, List: 0, name: 'item 1' },
+      { id: 3, List: 0, name: 'item 11', newlyAdded: true },
+    ]};
+    const items = getItemsToBeAdded(unEditedChecklist, editedChecklist);
+
+    it('returns an array', () => {
+      expect(Array.isArray(items)).toBe(true);
+    });
+
+    it('returns items that should be added', () => {
+      expect(items.length).toEqual(1);
+      expect(items[0].newlyAdded).toBe(true);
+    });
+
+    it('returns an empty array if no items should be added', () => {
+      const items = getItemsToBeAdded(unEditedChecklist, unEditedChecklist);
+
+      expect(items.length).toEqual(0);
+    });
   });
 });
