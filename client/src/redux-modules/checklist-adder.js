@@ -1,4 +1,4 @@
-import { axiosInstance } from '../utils/axios-helpers';
+import { createListOnBackend, createItemsOnBackend } from './helpers/backendHelpers';
 
 const ADD_CHECKLIST_REQUEST = 'checklist-adder/ADD_CHECKLIST_REQUEST';
 const ADD_CHECKLIST_SUCCESS = 'checklist-adder/ADD_CHECKLIST_SUCCESS';
@@ -45,46 +45,6 @@ export default (state = initialState, action = {}) => {
       return state;
     }
   }
-};
-
-export const createListOnBackend = (title) => {
-  const promise = new Promise((resolve, reject) => {
-    axiosInstance({
-      method: 'post',
-      url: '/checklists/lists/',
-      data: {
-        title,
-      },
-    })
-      .then((response) => {
-        resolve(response);
-      })
-      .catch((error) => {
-        reject(error);
-      });
-  });
-
-  return promise;
-};
-
-export const createItemsOnBackend = (listId, items) => {
-  const promise = new Promise((resolve, reject) => {
-    items.map(item => (
-      axiosInstance({
-        method: 'post',
-        url: '/checklists/items/',
-        data: {
-          List: listId,
-          name: item.name,
-        },
-      })
-        .catch((error) => {
-          reject(error);
-        })
-    ), resolve(true));
-  });
-
-  return promise;
 };
 
 export const addChecklist = (title, items) => (dispatch) => {

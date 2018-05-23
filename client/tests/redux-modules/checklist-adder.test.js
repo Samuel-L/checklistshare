@@ -5,11 +5,7 @@ import HttpStatus from 'http-status-codes';
 
 import { axiosInstance } from '../../src/utils/axios-helpers';
 import reducer, { actions, initialState } from '../../src/redux-modules/checklist-adder';
-import {
-  createListOnBackend,
-  createItemsOnBackend,
-  addChecklist
-} from '../../src/redux-modules/checklist-adder';
+import { addChecklist } from '../../src/redux-modules/checklist-adder';
 
 const middlewares = [ thunk ];
 const mockStore = configureMockStore(middlewares);
@@ -20,7 +16,7 @@ const axiosInstanceMock = new MockAdapter(axiosInstance);
 describe('redux-modules: checklist-adder', () => {
   describe('reducer', () => {
     it('returns initial state', () => {
-      expect(reducer()).toEqual(initialState); 
+      expect(reducer()).toEqual(initialState);
     });
 
     it('handles ADD_CHECKLIST_REQUEST', () => {
@@ -56,53 +52,6 @@ describe('redux-modules: checklist-adder', () => {
     axiosInstanceMock.reset();
   });
 
-  describe('helpers', () => {
-    describe('createListOnBackend()', () => {
-      it('resolves with response if successful', (done) => {
-        expect.assertions(2);
-        axiosInstanceMock.onPost('/checklists/lists/').reply(HttpStatus.CREATED, { id: 1, url: 'randomurl' });
-
-        return createListOnBackend('name').then((response) => {
-          expect(response.data.id).toEqual(1);
-          expect(response.data.url).toEqual('randomurl');
-          done();
-        });
-      });
-
-      it('rejects with error if unsuccessful', (done) => {
-        expect.assertions(1);
-        axiosInstanceMock.onPost('/checklists/lists/').reply(HttpStatus.INTERNAL_SERVER_ERROR);
-
-        return createListOnBackend('error').catch((error) => {
-          expect(error.response.status).toEqual(HttpStatus.INTERNAL_SERVER_ERROR);
-          done();
-        });
-      });
-    });
-
-    describe('createItemsOnBackend', () => {
-      it('resolves with true if successful', (done) => {
-        expect.assertions(1);
-        axiosInstanceMock.onPost('/checklists/items/').reply(HttpStatus.CREATED);
-        const items = [{ name: 'item' }];
-
-        return createItemsOnBackend(1, items).then((response) => {
-          expect(response).toBe(true);
-          done();
-        });
-      });
-
-      it.skip('rejects with error if unsuccessful', (done) => {         
-        expect.assertions(1);
-        axiosInstanceMock.onPost('/checklists/items/').reply(HttpStatus.INTERNAL_SERVER_ERROR);
-
-        return createItemsOnBackend(1, [{ name: 'item' }]).catch((error) => {
-          expect(error.response.status).toEqual(HttpStatus.INTERNAL_SERVER_ERROR);
-          done();
-        });
-      });
-    });
-
     describe('action creators', () => {
       describe('addChecklist()', () => {
         beforeEach(() => {
@@ -119,7 +68,7 @@ describe('redux-modules: checklist-adder', () => {
         const items = [{ name: 'name' }, { name: 'name' }];
 
         it('created ADD_CHECKLIST_REQUEST', () => {
-          const expectedAction = { type: actions.ADD_CHECKLIST_REQUEST }; 
+          const expectedAction = { type: actions.ADD_CHECKLIST_REQUEST };
 
           return store.dispatch(addChecklist(name, items)).then(() => {
             expect(store.getActions()[0]).toEqual(expectedAction);
@@ -148,4 +97,3 @@ describe('redux-modules: checklist-adder', () => {
       });
     });
   });
-});

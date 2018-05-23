@@ -46,36 +46,4 @@ export default (state = initialState, action = {}) => {
   }
 };
 
-export const getItemsToBeDeleted = (unEditedChecklist, editedChecklist) => {
-  const items = unEditedChecklist['items'].filter((item) => {
-    let exists;
 
-    editedChecklist['items'].forEach((eItem) => {
-      if (item.id === eItem.id) {
-        exists = true;
-      }
-    });
-    
-    if (!exists) {
-      return item;
-    }
-  });
-
-  return items;
-};
-
-export const deleteItemsFromBackend = (items) => {
-  const promise = new Promise((resolve, reject) => {
-    items.forEach((item) => {
-      axiosInstance({
-        method: 'delete',
-        url: `/checklists/items/${item.id}/`,
-      })
-        .catch((error) => {
-          reject(error);
-        })
-    }, resolve(true));
-  });
-
-  return promise;
-};
