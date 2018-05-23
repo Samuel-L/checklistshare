@@ -74,3 +74,24 @@ export const deleteItemsFromBackend = (items) => {
 
   return promise;
 };
+
+export const getItemsToBePatched = (unEditedChecklist, editedChecklist) => {
+  const items = editedChecklist.items.filter((eItem) => {
+    let edited;
+
+    unEditedChecklist.items.forEach((item) => {
+      if (item.id === eItem.id) {
+        if (item.name !== eItem.name) {
+          edited = true;
+        }
+      }
+    });
+
+    if (edited) {
+      return eItem;
+    }
+    return null;
+  });
+
+  return items;
+};
