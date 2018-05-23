@@ -1,3 +1,5 @@
+import { axiosInstance } from '../utils/axios-helpers';
+
 const UPDATE_CHECKLIST_REQUEST = 'checklist-updater/UPDATE_CHECKLIST_REQUEST';
 const UPDATE_CHECKLIST_SUCCESS = 'checklist-updater/UPDATE_CHECKLIST_SUCCESS';
 const UPDATE_CHECKLIST_FAILURE = 'checklist-updater/UPDATE_CHECKLIST_FAILURE';
@@ -60,4 +62,20 @@ export const getItemsToBeDeleted = (unEditedChecklist, editedChecklist) => {
   });
 
   return items;
+};
+
+export const deleteItemsFromBackend = (items) => {
+  const promise = new Promise((resolve, reject) => {
+    items.forEach((item) => {
+      axiosInstance({
+        method: 'delete',
+        url: `/checklists/items/${item.id}/`,
+      })
+        .catch((error) => {
+          reject(error);
+        })
+    }, resolve(true));
+  });
+
+  return promise;
 };

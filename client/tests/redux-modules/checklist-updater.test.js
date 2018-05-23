@@ -1,5 +1,14 @@
+import MockAdapter from 'axios-mock-adapter';
+import HttpStatus from 'http-status-codes';
+
+import { axiosInstance } from '../../src/utils/axios-helpers';
 import reducer, { actions, initialState } from '../../src/redux-modules/checklist-updater';
-import { getItemsToBeDeleted } from '../../src/redux-modules/checklist-updater';
+import {
+  getItemsToBeDeleted,
+  deleteItemsFromBackend,
+} from '../../src/redux-modules/checklist-updater';
+
+const axiosInstanceMock = new MockAdapter(axiosInstance);
 
 describe('redux-modules: checklist-updater', () => {
   describe('reducer', () => {
@@ -36,6 +45,10 @@ describe('redux-modules: checklist-updater', () => {
     });
   });
 
+  beforeEach(() => {
+    axiosInstanceMock.reset();
+  });
+
   describe('helpers', () => {
     describe('getItemsToBeDeleted()', () => {
       const unEditedChecklist = { items: [
@@ -62,6 +75,28 @@ describe('redux-modules: checklist-updater', () => {
         const items = getItemsToBeDeleted(unEditedChecklist, unEditedChecklist);
 
         expect(items.length).toEqual(0);
+      });
+    });
+
+    describe('getItemsToBeDeleted()', () => {
+      it('resolves with true if successful', (done) => {
+        expect.assertions(1);
+        axiosInstanceMock.onDelete('/checklists/items/1/').reply(HttpStatus.NO_CONTENT);
+
+        return deleteItemsFromBackend([{ id: 1 }]).then((response) => {
+          expect(response).toBe(true);
+          done();
+        });
+      });
+
+      it.skip('rejects with false if unsuccessful', (done) => {
+        expect.assertions(1);
+        axiosInstanceMock.onDelete('/checklists/items/1/').reply(HttpStatus.INTERNAL_SERVER_ERROR);
+
+        return deleteItemsFromBackend([{ id: 1 }]).catch((error) => {
+          expect(error.response.status).toEqual(HttpStatus.INTERNAL_SERVER_ERROR);
+          done();
+        });
       });
     });
   });
