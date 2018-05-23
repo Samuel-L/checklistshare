@@ -77,7 +77,7 @@ describe('backendHelpers', () => {
       });
     });
 
-    it.skip('rejects with false if unsuccessful', (done) => {
+    it('rejects with false if unsuccessful', (done) => {
       expect.assertions(1);
       axiosInstanceMock.onDelete('/checklists/items/1/').reply(HttpStatus.INTERNAL_SERVER_ERROR);
 
@@ -99,7 +99,7 @@ describe('backendHelpers', () => {
       });
     });
 
-    it.skip('rejects with false if unsuccessful', (done) => {
+    it('rejects with false if unsuccessful', (done) => {
       expect.assertions(1);
       axiosInstanceMock.onPatch('/checklists/items/1/').reply(HttpStatus.INTERNAL_SERVER_ERROR);
 
@@ -110,7 +110,7 @@ describe('backendHelpers', () => {
     });
   });
 
-  describe.skip('patchChecklistTitleOnBackend()', () => {
+  describe('patchChecklistTitleOnBackend()', () => {
     it('resolves with response if successful', (done) => {
       expect.assertions(1);
       axiosInstanceMock.onPatch('/checklists/lists/1/').reply(HttpStatus.NO_CONTENT);
@@ -130,7 +130,6 @@ describe('backendHelpers', () => {
         done();
       });
     });
-
   });
 
   describe('getItemsToBeDeleted()', () => {

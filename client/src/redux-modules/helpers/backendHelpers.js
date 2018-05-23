@@ -93,6 +93,23 @@ export const patchItemsOnBackend = (items) => {
 };
 
 export const patchChecklistTitleOnBackend = (listId, title) => {
+  const promise = new Promise((resolve, reject) => {
+    axiosInstance({
+      method: 'patch',
+      url: `/checklists/lists/${listId}/`,
+      data: {
+        title,
+      },
+    })
+     .then((response) => {
+       resolve(true);
+      })
+     .catch((error) => {
+       reject(error);
+     });
+  });
+
+  return promise;
 };
 
 export const getItemsToBeDeleted = (unEditedChecklist, editedChecklist) => {
