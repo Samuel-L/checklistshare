@@ -1,43 +1,18 @@
 import { axiosInstance } from '../../utils/axios-helpers';
 
 export const createListOnBackend = (title) => {
-  const promise = new Promise((resolve, reject) => {
-    axiosInstance({
-      method: 'post',
-      url: '/checklists/lists/',
-      data: {
-        title,
-      },
-    })
-      .then((response) => {
-        resolve(response);
-      })
-      .catch((error) => {
-        reject(error);
-      });
-  });
-
-  return promise;
 };
 
 export const createItemsOnBackend = (listId, items) => {
-  const promise = new Promise((resolve, reject) => {
-    items.map(item => (
-      axiosInstance({
-        method: 'post',
-        url: '/checklists/items/',
-        data: {
-          List: listId,
-          name: item.name,
-        },
-      })
-        .catch((error) => {
-          reject(error);
-        })
-    ), resolve(true));
-  });
+};
 
-  return promise;
+export const deleteItemsFromBackend = (items) => {
+};
+
+export const patchItemsOnBackend = (items) => {
+};
+
+export const patchChecklistTitleOnBackend = (listId, title) => {
 };
 
 export const getItemsToBeDeleted = (unEditedChecklist, editedChecklist) => {
@@ -57,22 +32,6 @@ export const getItemsToBeDeleted = (unEditedChecklist, editedChecklist) => {
   });
 
   return items;
-};
-
-export const deleteItemsFromBackend = (items) => {
-  const promise = new Promise((resolve, reject) => {
-    items.forEach((item) => {
-      axiosInstance({
-        method: 'delete',
-        url: `/checklists/items/${item.id}/`,
-      })
-        .catch((error) => {
-          reject(error);
-        });
-    }, resolve(true));
-  });
-
-  return promise;
 };
 
 export const getItemsToBePatched = (unEditedChecklist, editedChecklist) => {
@@ -113,43 +72,4 @@ export const getItemsToBeAdded = (unEditedChecklist, editedChecklist) => {
   });
 
   return items;
-};
-
-export const patchItemsOnBackend = (items) => {
-  const promise = new Promise((resolve, reject) => {
-    items.forEach((item) => {
-      axiosInstance({
-        method: 'patch',
-        url: `/checklists/items/${item.id}/`,
-        data: {
-          name: item.name,
-        },
-      })
-        .catch((error) => {
-          reject(error);
-        });
-    }, resolve(true));
-  });
-
-  return promise;
-};
-
-export const patchChecklistTitleOnBackend = (listId, title) => {
-  const promise = new Promise((resolve, reject) => {
-    axiosInstance({
-      method: 'patch',
-      url: `/checklists/lists/${listId}/`,
-      data: {
-        title,
-      },
-    })
-      .then(() => {
-        resolve(true);
-      })
-      .catch((error) => {
-        reject(error);
-      });
-  });
-
-  return promise;
 };
