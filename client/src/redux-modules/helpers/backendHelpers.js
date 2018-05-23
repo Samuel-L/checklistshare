@@ -69,6 +69,27 @@ export const deleteItemsFromBackend = (items) => {
 };
 
 export const patchItemsOnBackend = (items) => {
+  const promise = new Promise((resolve, reject) => {
+    const itemPatches = items.map(item => (
+      axiosInstance({
+        method: 'patch',
+        url: `/checklists/items/${item.id}/`,
+        data: {
+          name: item.name,
+        },
+      })
+    ));
+
+    axios.all(itemPatches)
+      .then(() => {
+        resolve(true);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+
+  return promise;
 };
 
 export const patchChecklistTitleOnBackend = (listId, title) => {

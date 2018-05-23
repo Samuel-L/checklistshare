@@ -88,7 +88,7 @@ describe('backendHelpers', () => {
     });
   });
 
-  describe.skip('patchItemsOnBackend()', () => {
+  describe('patchItemsOnBackend()', () => {
     it('resolves with true if successful', (done) => {
       expect.assertions(1);
       axiosInstanceMock.onPatch('/checklists/items/1/').reply(HttpStatus.NO_CONTENT);
