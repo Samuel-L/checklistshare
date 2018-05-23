@@ -52,48 +52,48 @@ describe('redux-modules: checklist-adder', () => {
     axiosInstanceMock.reset();
   });
 
-    describe('action creators', () => {
-      describe('addChecklist()', () => {
-        beforeEach(() => {
-          axiosInstanceMock
-            .onPost('/checklists/lists/').reply(HttpStatus.CREATED, { id: 1, url: 'randomurl' })
-            .onPost('/checklists/items/').reply(HttpStatus.CREATED);
+  describe('action creators', () => {
+    describe('addChecklist()', () => {
+      beforeEach(() => {
+        axiosInstanceMock
+          .onPost('/checklists/lists/').reply(HttpStatus.CREATED, { id: 1, url: 'randomurl' })
+          .onPost('/checklists/items/').reply(HttpStatus.CREATED);
+      });
+
+      afterEach(() => {
+        store.clearActions();
+      });
+
+      const name = 'name';
+      const items = [{ name: 'name' }, { name: 'name' }];
+
+      it('created ADD_CHECKLIST_REQUEST', () => {
+        const expectedAction = { type: actions.ADD_CHECKLIST_REQUEST };
+
+        return store.dispatch(addChecklist(name, items)).then(() => {
+          expect(store.getActions()[0]).toEqual(expectedAction);
         });
+      });
 
-        afterEach(() => {
-          store.clearActions();
+      it('creates ADD_CHECKLIST_SUCCESS when successful', () => {
+        const expectedAction = { type: actions.ADD_CHECKLIST_SUCCESS, payload: 'randomurl' };
+
+        return store.dispatch(addChecklist(name, items)).then(() => {
+          expect(store.getActions()[1]).toEqual(expectedAction);
         });
+      });
 
-        const name = 'name';
-        const items = [{ name: 'name' }, { name: 'name' }];
+      it('creates ADD_CHECKLIST_FAILURE when unsuccessful', () => {
+        axiosInstanceMock.onPost('/checklists/lists/').reply(HttpStatus.INTERNAL_SERVER_ERROR);
+        const expectedAction = {
+          type: actions.ADD_CHECKLIST_FAILURE,
+          payload: HttpStatus.INTERNAL_SERVER_ERROR,
+        };
 
-        it('created ADD_CHECKLIST_REQUEST', () => {
-          const expectedAction = { type: actions.ADD_CHECKLIST_REQUEST };
-
-          return store.dispatch(addChecklist(name, items)).then(() => {
-            expect(store.getActions()[0]).toEqual(expectedAction);
-          });
-        });
-
-        it('creates ADD_CHECKLIST_SUCCESS when successful', () => {
-          const expectedAction = { type: actions.ADD_CHECKLIST_SUCCESS, payload: 'randomurl' };
-
-          return store.dispatch(addChecklist(name, items)).then(() => {
-            expect(store.getActions()[1]).toEqual(expectedAction);
-          });
-        });
-
-        it('creates ADD_CHECKLIST_FAILURE when unsuccessful', () => {
-          axiosInstanceMock.onPost('/checklists/lists/').reply(HttpStatus.INTERNAL_SERVER_ERROR);
-          const expectedAction = {
-            type: actions.ADD_CHECKLIST_FAILURE,
-            payload: HttpStatus.INTERNAL_SERVER_ERROR,
-          };
-
-          return store.dispatch(addChecklist(name, items)).then(() => {
-            expect(store.getActions()[1]).toEqual(expectedAction);
-          });
+        return store.dispatch(addChecklist(name, items)).then(() => {
+          expect(store.getActions()[1]).toEqual(expectedAction);
         });
       });
     });
   });
+});

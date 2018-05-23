@@ -43,7 +43,7 @@ describe('backendHelpers', () => {
     });
   });
 
-  describe.skip('createItemsOnBackend', () => {
+  describe('createItemsOnBackend', () => {
     it('resolves with true if successful', (done) => {
       expect.assertions(1);
       axiosInstanceMock.onPost('/checklists/items/').reply(HttpStatus.CREATED);
@@ -55,7 +55,7 @@ describe('backendHelpers', () => {
       });
     });
 
-    it.skip('rejects with error if unsuccessful', (done) => {
+    it('rejects with error if unsuccessful', (done) => {
       expect.assertions(1);
       axiosInstanceMock.onPost('/checklists/items/').reply(HttpStatus.INTERNAL_SERVER_ERROR);
 

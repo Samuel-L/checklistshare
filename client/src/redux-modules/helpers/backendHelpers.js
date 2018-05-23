@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 import { axiosInstance } from '../../utils/axios-helpers';
 
 export const createListOnBackend = (title) => {
@@ -21,6 +23,28 @@ export const createListOnBackend = (title) => {
 };
 
 export const createItemsOnBackend = (listId, items) => {
+  const promise = new Promise((resolve, reject) => {
+    const itemCreations = items.map(item => (
+      axiosInstance({
+        method: 'post',
+        url: '/checklists/items/',
+        data: {
+          List: listId,
+          name: item.name,
+        },
+      })
+    ));
+
+    axios.all(itemCreations)
+      .then(() => {
+        resolve(true);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+
+  return promise;
 };
 
 export const deleteItemsFromBackend = (items) => {

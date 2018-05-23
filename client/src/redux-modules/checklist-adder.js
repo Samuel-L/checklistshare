@@ -53,7 +53,7 @@ export const addChecklist = (title, items) => (dispatch) => {
   return createListOnBackend(title)
     .then((response) => {
       const listId = response.data.id;
-      createItemsOnBackend(listId, items)
+      return createItemsOnBackend(listId, items)
         .then(() => {
           dispatch({ type: ADD_CHECKLIST_SUCCESS, payload: response.data.url });
         })
