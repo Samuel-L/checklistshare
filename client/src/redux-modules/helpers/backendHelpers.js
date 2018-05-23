@@ -133,3 +133,23 @@ export const patchItemsOnBackend = (items) => {
 
   return promise;
 };
+
+export const patchChecklistTitleOnBackend = (listId, title) => {
+  const promise = new Promise((resolve, reject) => {
+    axiosInstance({
+      method: 'patch',
+      url: `/checklists/lists/${listId}/`,
+      data: {
+        title,
+      },
+    })
+      .then(() => {
+        resolve(true);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+
+  return promise;
+};

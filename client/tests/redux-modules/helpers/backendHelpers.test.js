@@ -10,6 +10,7 @@ import {
   getItemsToBePatched,
   getItemsToBeAdded,
   patchItemsOnBackend,
+  patchChecklistTitleOnBackend,
 } from '../../../src/redux-modules/helpers/backendHelpers';
 
 const axiosInstanceMock = new MockAdapter(axiosInstance);
@@ -197,4 +198,26 @@ describe('backendHelpers', () => {
     });
   });
 
+  describe('patchChecklistTitleOnBackend()', () => {
+    it('resolves with response if successful', (done) => {
+      expect.assertions(1);
+      axiosInstanceMock.onPatch('/checklists/lists/1/').reply(HttpStatus.NO_CONTENT);
+
+      return patchChecklistTitleOnBackend(1, 'new title').then((response) => {
+        expect(response).toBe(true);
+        done();
+      });
+    });
+
+    it('rejects with error if unsuccessful', (done) => {
+      expect.assertions(1);
+      axiosInstanceMock.onPatch('/checklists/lists/1/').reply(HttpStatus.INTERNAL_SERVER_ERROR);
+
+      return patchChecklistTitleOnBackend(1, 'new title').catch((error) => {
+        expect(error.response.status).toEqual(HttpStatus.INTERNAL_SERVER_ERROR);
+        done();
+      });
+    });
+
+  });
 });
