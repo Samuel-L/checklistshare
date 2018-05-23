@@ -9,6 +9,7 @@ import {
   deleteItemsFromBackend,
   getItemsToBePatched,
   getItemsToBeAdded,
+  patchItemsOnBackend,
 } from '../../../src/redux-modules/helpers/backendHelpers';
 
 const axiosInstanceMock = new MockAdapter(axiosInstance);
@@ -173,4 +174,27 @@ describe('backendHelpers', () => {
       expect(items.length).toEqual(0);
     });
   });
+
+  describe('patchItemsOnBackend()', () => {
+    it('resolves with true if successful', (done) => {
+      expect.assertions(1);
+      axiosInstanceMock.onPatch('/checklists/items/1/').reply(HttpStatus.NO_CONTENT);
+
+      return patchItemsOnBackend([{ id: 1, name: 'new name' }]).then((response) => {
+        expect(response).toBe(true);
+        done();
+      });
+    });
+
+    it.skip('rejects with false if unsuccessful', (done) => {
+      expect.assertions(1);
+      axiosInstanceMock.onPatch('/checklists/items/1/').reply(HttpStatus.INTERNAL_SERVER_ERROR);
+
+      return patchItemsOnBackend([{ id: 1, name: 'new name' }]).catch((error) => {
+        expect(error.response.status).toEqual(HttpStatus.INTERNAL_SERVER_ERROR);
+        done();
+      });
+    });
+  });
+
 });

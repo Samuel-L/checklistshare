@@ -114,3 +114,22 @@ export const getItemsToBeAdded = (unEditedChecklist, editedChecklist) => {
 
   return items;
 };
+
+export const patchItemsOnBackend = (items) => {
+  const promise = new Promise((resolve, reject) => {
+    items.forEach((item) => {
+      axiosInstance({
+        method: 'patch',
+        url: `/checklists/items/${item.id}/`,
+        data: {
+          name: item.name,
+        },
+      })
+        .catch((error) => {
+          reject(error);
+        });
+    }, resolve(true));
+  });
+
+  return promise;
+};
