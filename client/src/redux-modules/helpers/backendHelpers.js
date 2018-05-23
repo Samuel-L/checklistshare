@@ -11,12 +11,12 @@ export const createListOnBackend = (title) => {
         title,
       },
     })
-     .then((response) => {
-       resolve(response);
+      .then((response) => {
+        resolve(response);
       })
-     .catch((error) => {
-       reject(error);
-     });
+      .catch((error) => {
+        reject(error);
+      });
   });
 
   return promise;
@@ -101,12 +101,12 @@ export const patchChecklistTitleOnBackend = (listId, title) => {
         title,
       },
     })
-     .then((response) => {
-       resolve(true);
+      .then(() => {
+        resolve(true);
       })
-     .catch((error) => {
-       reject(error);
-     });
+      .catch((error) => {
+        reject(error);
+      });
   });
 
   return promise;
