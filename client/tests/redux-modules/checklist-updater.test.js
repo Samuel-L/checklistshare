@@ -1,4 +1,5 @@
 import reducer, { actions, initialState } from '../../src/redux-modules/checklist-updater';
+import { getItemsToBeDeleted } from '../../src/redux-modules/checklist-updater';
 
 describe('redux-modules: checklist-updater', () => {
   describe('reducer', () => {
@@ -32,6 +33,36 @@ describe('redux-modules: checklist-updater', () => {
       const correctState = { ...initialState };
 
       expect(reducer(undefined, action)).toEqual(correctState);
+    });
+  });
+
+  describe('helpers', () => {
+    describe('getItemsToBeDeleted()', () => {
+      const unEditedChecklist = { items: [
+        { id: 0, List: 0, name: 'item 1' },
+        { id: 1, List: 0, name: 'item 2' },
+        { id: 2, List: 0, name: 'item 3' },
+      ]};
+      const editedChecklist = { items: [
+        { id: 0, List: 0, name: 'item 1' },
+      ]};
+      const items = getItemsToBeDeleted(unEditedChecklist, editedChecklist); 
+
+      it('returns an array', () => {
+        expect(Array.isArray(items)).toBe(true);
+      });
+
+      it('returns items that should be deleted', () => {
+        expect(items.length).toEqual(2);
+        expect(items[0].id).toBe(1);
+        expect(items[1].id).toBe(2);
+      });
+
+      it('returns an empty array if no items should be deleted', () => {
+        const items = getItemsToBeDeleted(unEditedChecklist, unEditedChecklist);
+
+        expect(items.length).toEqual(0);
+      });
     });
   });
 });
