@@ -1,4 +1,14 @@
-import { axiosInstance } from '../utils/axios-helpers';
+import {
+  deleteItemsFromBackend,
+  patchItemsOnBackend,
+  patchChecklistTitleOnBackend,
+  createItemsOnBackend,
+} from './helpers/backendHelpers';
+import {
+  getItemsToBeDeleted,
+  getItemsToBePatched,
+  getItemsToBeAdded,
+} from './helpers/filterHelpers';
 
 const UPDATE_CHECKLIST_REQUEST = 'checklist-updater/UPDATE_CHECKLIST_REQUEST';
 const UPDATE_CHECKLIST_SUCCESS = 'checklist-updater/UPDATE_CHECKLIST_SUCCESS';
@@ -44,4 +54,39 @@ export default (state = initialState, action = {}) => {
       return state;
     }
   }
+};
+
+export const updateChecklist = (uneditedChecklist, editedChecklist) => (dispatch) => {
+  dispatch({ type: UPDATE_CHECKLIST_REQUEST });
+
+  const itemsToBeDeleted = getItemsToBeDeleted(uneditedChecklist, editedChecklist);
+  let deletePromise;
+  if (itemsToBeDeleted) {
+    deletePromise = deleteItemsFromBackend(itemsToBeDeleted);
+  }
+
+  const itemsToBePatched = getItemsToBePatched(uneditedChecklist, editedChecklist);
+  let patchPromise;
+  if (itemsToBePatched) {
+    patchPromise = patchItemsOnBackend(itemsToBePatched);
+  }
+
+  const itemsToBeAdded = getItemsToBeAdded(uneditedChecklist, editedChecklist);
+  let addPromise;
+  if (itemsToBeAdded) {
+    addPromise = createItemsOnBackend(uneditedChecklist.id, itemsToBeAdded);
+  }
+
+  let titlePatchPromise;
+  if (uneditedChecklist.title !== editedChecklist) {
+    titlePatchPromise = patchChecklistTitleOnBackend(uneditedChecklist.id, editedChecklist.title);
+  }
+
+  return Promise.all([deletePromise, patchPromise, addPromise, titlePatchPromise])
+    .then(() => {
+      dispatch({ type: UPDATE_CHECKLIST_SUCCESS });
+    })
+    .catch((error) => {
+      dispatch({ type: UPDATE_CHECKLIST_FAILURE, payload: error.response.status });
+    });
 };
