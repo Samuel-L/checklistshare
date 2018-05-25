@@ -18,16 +18,6 @@ const styles = theme => ({
       top: '20%',
       width: '150px !important',
     },
-    [theme.breakpoints.up('md')]: {
-      position: 'absolute',
-      bottom: '0',
-      width: '100%',
-    },
-    [theme.breakpoints.down('sm')]: {
-      position: 'absolute',
-      bottom: '0',
-      width: '100%',
-    },
   },
   buttonDiv: {
     width: '100%',
@@ -63,7 +53,7 @@ const CreateChecklistForm = props => (
     {
       props.items.map((item, idx) => (
         <ChecklistItem
-          key={item.id}
+          key={item.seq || item.id}
           item={item}
           idx={idx}
           handleItemTextChange={props.handleItemTextChange}
@@ -91,7 +81,7 @@ const CreateChecklistForm = props => (
           color="primary"
           onClick={props.handleCreateList}
         >
-          Create List
+          { props.editMode ? 'Update List' : 'Create List' }
         </Button>
       </div>
     </div>
@@ -111,8 +101,11 @@ CreateChecklistForm.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
   })).isRequired,
+  editMode: PropTypes.bool,
 };
 
-CreateChecklistForm.defaultProps = {};
+CreateChecklistForm.defaultProps = {
+  editMode: false,
+};
 
 export default withStyles(styles)(CreateChecklistForm);

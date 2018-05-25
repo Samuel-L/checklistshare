@@ -30,12 +30,13 @@ class ItemSerializerTests(TestCase):
 
     def test_contains_expected_fields(self):
         self.assertEqual(self.data.keys(), set([
-            'id', 'List', 'name'
+            'id', 'List', 'name', 'seq',
         ]))
 
     def test_serializer_fields_content(self):
         self.assertEqual(self.data['List'], self.item.List.id)
         self.assertEqual(self.data['name'], self.item.name)
+        self.assertEqual(self.data['seq'], self.item.seq)
 
 class ChecklistSerializerTests(TestCase):
     fixtures = [ 'list_fixture.json', 'item_fixture.json' ]

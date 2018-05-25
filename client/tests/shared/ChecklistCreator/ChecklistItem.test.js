@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import ChecklistItem from '../../../../src/pages/Home/ChecklistCreator/ChecklistItem';
+import ChecklistItem from '../../../src/shared/ChecklistCreator/ChecklistItem';
 
 describe('pages/Home/ChecklistCreator: ChecklistItem', () => {
   const item = { id: 0, name: 'Item' };
@@ -17,6 +17,6 @@ describe('pages/Home/ChecklistCreator: ChecklistItem', () => {
 ).toJSON();
 
   it('should render', () => {
-    expect(tree).toMatchSnapshot(); 
+    expect(tree).toMatchSnapshot();
   });
 });

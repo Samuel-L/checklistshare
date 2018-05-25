@@ -17,6 +17,7 @@ class Item(models.Model):
     """
     List = models.ForeignKey(List, on_delete=models.CASCADE, related_name='items')
     name = models.CharField(max_length=100)
+    seq = models.IntegerField()
 
     def __str__(self):
         return f'{self.List.title} - {self.name}'
