@@ -16,6 +16,12 @@ export class Checklist extends Component {
     let url = this.props.location.pathname;
     url = url.substring(1, url.length); // remove '/' from start of url
     this.props.fetchChecklist(url);
+
+    // document.title = this.props.checklist.title;
+  }
+
+  componentDidUpdate() {
+    document.title = `ChecklistShare - ${this.props.checklist.title}`;
   }
 
   toggleList = value => () => {
