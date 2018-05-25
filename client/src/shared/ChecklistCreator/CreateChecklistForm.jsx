@@ -53,7 +53,7 @@ const CreateChecklistForm = props => (
     {
       props.items.map((item, idx) => (
         <ChecklistItem
-          key={item.id}
+          key={item.seq || item.id}
           item={item}
           idx={idx}
           handleItemTextChange={props.handleItemTextChange}

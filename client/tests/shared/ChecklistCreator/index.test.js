@@ -30,8 +30,8 @@ describe('pages/Home: ChecklistCreator', () => {
 
     it('handles changing item text', () => {
       expect(wrapper.state('items')[0].name).toBe('');
-      wrapper.find('[id="item-0"]').at(3).simulate('change',
-        { target: { name: 'item-0', value: 'Item text' } }
+      wrapper.find('[id="item-1"]').at(3).simulate('change',
+        { target: { name: 'item-1', value: 'Item text' } }
       );
       expect(wrapper.state('items')[0].name).toBe('Item text');
     });
@@ -53,9 +53,9 @@ describe('pages/Home: ChecklistCreator', () => {
         id: 0,
         title: 'Checklist title',
         items: [
-          { id: 0, name: 'Item name 1' },
-          { id: 1, name: 'Item name 2'},
-          { id: 2, name: 'Item name 3'}
+          { seq: 1, name: 'Item name 1', newlyAdded: true },
+          { seq: 2, name: 'Item name 2', newlyAdded: true },
+          { seq: 3, name: 'Item name 3', newlyAdded: true },
         ],
         submitConfirmationModalOpen: true,
         snackError: false,
@@ -68,18 +68,18 @@ describe('pages/Home: ChecklistCreator', () => {
       wrapper.find('#delete-item-button').at(0).simulate('click');
 
       wrapper.find('#add-item-button').at(0).simulate('click');
-      wrapper.find('[id="item-0"]').at(3).simulate('change',
-        { target: { name: 'item-0', value: 'Item name 1' } }
-      );
-
-      wrapper.find('#add-item-button').at(0).simulate('click');
       wrapper.find('[id="item-1"]').at(3).simulate('change',
-        { target: { name: 'item-1', value: 'Item name 2' } }
+        { target: { name: 'item-1', value: 'Item name 1' } }
       );
 
       wrapper.find('#add-item-button').at(0).simulate('click');
       wrapper.find('[id="item-2"]').at(3).simulate('change',
-        { target: { name: 'item-2', value: 'Item name 3' } }
+        { target: { name: 'item-2', value: 'Item name 2' } }
+      );
+
+      wrapper.find('#add-item-button').at(0).simulate('click');
+      wrapper.find('[id="item-3"]').at(3).simulate('change',
+        { target: { name: 'item-3', value: 'Item name 3' } }
       );
 
       wrapper.find('#create-list-button').at(0).simulate('click');

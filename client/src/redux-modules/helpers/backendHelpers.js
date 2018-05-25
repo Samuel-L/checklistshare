@@ -31,6 +31,7 @@ export const createItemsOnBackend = (listId, items) => {
         data: {
           List: listId,
           name: item.name,
+          seq: item.seq,
         },
       })
     ));

@@ -6,6 +6,7 @@ import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
 
 import { addChecklist } from '../../redux-modules/checklist-adder';
+import { updateChecklist } from '../../redux-modules/checklist-updater';
 import CreateChecklistForm from './CreateChecklistForm';
 import SubmitConfirmationModal from './SubmitConfirmationModal';
 import SnackError from '../SnackError';
@@ -14,7 +15,7 @@ export class ChecklistCreator extends Component {
   state = {
     id: 0,
     title: '',
-    items: [{ id: 0, name: '' }],
+    items: [{ seq: 1, id: 0, name: '' }],
     submitConfirmationModalOpen: false,
     snackError: false,
   };
@@ -48,17 +49,24 @@ export class ChecklistCreator extends Component {
   handleAddItem = () => {
     const { items } = this.state;
     this.setState({
-      items: this.state.items.concat([{ id: items.length, name: '' }]),
+      items: this.state.items.concat([
+        {
+          seq: items.length + 1 || 1,
+          name: '',
+          newlyAdded: true,
+        },
+      ]),
     });
   };
 
   handleDeleteItem = (idx) => {
+    const { items } = this.state;
     this.setState({
       items: this.state.items.filter((item, iidx) => idx !== iidx),
     }, () => {
       // Ensure that the id field is unique
       const newItems = this.state.items.map((item, iidx) => ({
-        ...item, id: iidx,
+        ...item, seq: iidx <= 0 ? 1 : items[iidx - 1].seq + 1,
       }));
 
       this.setState({ items: newItems });
@@ -100,7 +108,17 @@ export class ChecklistCreator extends Component {
     event.preventDefault();
     const { title, items } = this.state;
     if (this.props.editMode) {
-      // editChecklist()
+      const uneditedChecklist = this.props.checklist;
+      const editedChecklist = {
+        id: this.state.id,
+        title: this.state.title,
+        items: this.state.items,
+      };
+
+      this.props.updateChecklist(uneditedChecklist, editedChecklist).then(() => {
+        window.location.reload();
+      });
+      this.setState({ submitConfirmationModalOpen: false });
     } else {
       this.props.addChecklist(title, items);
     }
@@ -151,18 +169,20 @@ const mapStateToProps = () => ({});
 
 const mapDispatchToProps = dispatch => ({
   addChecklist: (title, items) => dispatch(addChecklist(title, items)),
-  // editChecklist
+  updateChecklist: (uneditedChecklist, editedChecklist) =>
+    dispatch(updateChecklist(uneditedChecklist, editedChecklist)),
 });
 
 ChecklistCreator.propTypes = {
   editMode: PropTypes.bool,
   addChecklist: PropTypes.func.isRequired,
+  updateChecklist: PropTypes.func,
   checklist: PropTypes.shape({
     id: PropTypes.number,
     title: PropTypes.string,
     url: PropTypes.string,
     items: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.number,
+      seq: PropTypes.number,
       List: PropTypes.number,
       name: PropTypes.string,
     })),
@@ -176,9 +196,10 @@ ChecklistCreator.defaultProps = {
     title: '',
     url: '',
     items: [
-      { id: 0, List: 0, name: '' },
+      { seq: 0, List: 0, name: '' },
     ],
   },
+  updateChecklist: () => {},
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChecklistCreator);

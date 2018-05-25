@@ -13,7 +13,6 @@ export const getItemsToBeDeleted = (unEditedChecklist, editedChecklist) => {
     }
     return null;
   });
-
   return items;
 };
 

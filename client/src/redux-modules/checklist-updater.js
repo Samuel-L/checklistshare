@@ -78,7 +78,7 @@ export const updateChecklist = (uneditedChecklist, editedChecklist) => (dispatch
   }
 
   let titlePatchPromise;
-  if (uneditedChecklist.title !== editedChecklist) {
+  if (uneditedChecklist.title !== editedChecklist.title) {
     titlePatchPromise = patchChecklistTitleOnBackend(uneditedChecklist.id, editedChecklist.title);
   }
 

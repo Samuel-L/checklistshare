@@ -28,11 +28,11 @@ const styles = () => ({
 });
 
 const ChecklistItem = props => (
-  <div key={props.item.id} className={props.classes.root}>
+  <div key={props.item.seq || props.item.id} className={props.classes.root}>
     <TextField
       className={props.classes.textField}
       required
-      id={`item-${props.item.id}`}
+      id={`item-${props.item.seq || props.item.id}`}
       label="Item"
       value={props.item.name}
       onChange={props.handleItemTextChange(props.idx)}
@@ -53,6 +53,7 @@ const ChecklistItem = props => (
 ChecklistItem.propTypes = {
   idx: PropTypes.number.isRequired,
   item: PropTypes.shape({
+    seq: PropTypes.number,
     id: PropTypes.number,
     name: PropTypes.string,
   }).isRequired,
