@@ -10,7 +10,7 @@ class ListSerializer(serializers.ModelSerializer):
 class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Item
-        fields = ('id', 'List', 'name')
+        fields = ('id', 'List', 'name', 'seq')
 
 class ChecklistSerializer(serializers.ModelSerializer):
     items = ItemSerializer(many=True, read_only=True)
