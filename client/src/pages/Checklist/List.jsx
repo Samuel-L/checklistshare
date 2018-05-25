@@ -21,6 +21,12 @@ const styles = theme => ({
     color: '#57c557 !important',
   },
   button: {
+    [theme.breakpoints.up('lg')]: {
+      position: 'fixed',
+      right: '10%',
+      top: '20%',
+      width: '150px !important',
+    },
     width: '100%',
     backgroundColor: theme.palette.primary.A700,
   },
@@ -62,6 +68,7 @@ const ListComponent = props => (
     </Grid>
     <Grid item xs={12}>
       <Button
+
         variant="raised"
         color="primary"
         className={props.classes.button}
