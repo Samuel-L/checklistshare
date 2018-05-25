@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import Typography from 'material-ui/Typography';
+
 import { fetchChecklist } from '../../redux-modules/checklist-fetcher';
 import List from './List';
 import ChecklistCreatorComponent from '../../shared/ChecklistCreator';
@@ -42,27 +44,37 @@ export class Checklist extends Component {
     this.setState({ editorMode: !this.state.editorMode });
   };
 
+  renderContent() {
+    if (this.state.editorMode) {
+      return <ChecklistCreatorComponent editMode checklist={this.props.checklist} />;
+    } else if (this.props.error === 404) {
+      return (
+        <Typography variant="display1" style={{ textAlign: 'center', marginTop: '20px' }}>
+          Not Found
+        </Typography>
+      );
+    }
+    return (
+      <List
+        checklist={this.props.checklist}
+        toggleList={this.toggleList}
+        checked={this.state.checked}
+        toggleEditMode={this.toggleEditMode}
+      />
+    );
+  }
+
   render() {
     return (
       <div>
-        { !this.state.editorMode
-          ?
-            <List
-              checklist={this.props.checklist}
-              toggleList={this.toggleList}
-              checked={this.state.checked}
-              toggleEditMode={this.toggleEditMode}
-            />
-          :
-            // notice about being in edit mode
-            <ChecklistCreatorComponent editMode checklist={this.props.checklist} />
-        }
+        { this.renderContent() }
       </div>
     );
   }
 }
 
 Checklist.propTypes = {
+  error: PropTypes.number,
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired,
   }),
@@ -79,6 +91,7 @@ Checklist.propTypes = {
 };
 
 Checklist.defaultProps = {
+  error: 0,
   location: {
     pathname: '',
   },
