@@ -10,6 +10,7 @@ import Header from './shared/Header';
 import Footer from './shared/Footer';
 import HomePage from './pages/Home';
 import ChecklistPage from './pages/Checklist';
+import ContactPage from './pages/Contact';
 
 const theme = createMuiTheme({
   palette: {
@@ -26,6 +27,7 @@ const App = () => (
       <div style={{ minHeight: '83%' }}>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})" component={ChecklistPage} />
+        <Route exact path="/contact" component={ContactPage} />
       </div>
       <Footer />
     </div>
