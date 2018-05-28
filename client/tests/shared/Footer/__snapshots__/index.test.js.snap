@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`shared: Footer matches snapshot 1`] = `
+<div
+  className="Footer-base-1"
+>
+  <a
+    className="Footer-link-2"
+    href="#/contact"
+    onClick={[Function]}
+  >
+    Contact
+  </a>
+</div>
+`;

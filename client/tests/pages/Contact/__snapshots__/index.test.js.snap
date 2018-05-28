@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pages: Contact matches snapshot 1`] = `
+<div
+  className="MuiGrid-container-5"
+>
+  <div
+    className="MuiGrid-item-6 MuiGrid-grid-xs-12-42"
+  >
+    <h1
+      className="MuiTypography-root-95 MuiTypography-display1-99 MuiTypography-gutterBottom-112 MuiTypography-alignCenter-108 Contact-title-2"
+    >
+      Contact
+    </h1>
+  </div>
+  <div
+    className="MuiGrid-item-6 MuiGrid-grid-xs-12-42"
+  >
+    <p
+      className="MuiTypography-root-95 MuiTypography-body1-104 Contact-text-3"
+    >
+      Feedback and bug findings can be sent to samuell.person@gmail.com.
+    </p>
+    <p
+      className="MuiTypography-root-95 MuiTypography-body1-104 Contact-text-3"
+    >
+      Source code can be found 
+      <a
+        className="Contact-link-4"
+        href="https://github.com/Samuel-L/checklistshare"
+      >
+        here
+      </a>
+      .
+    </p>
+  </div>
+</div>
+`;
