@@ -1,4 +1,6 @@
 __pycache__
+index_bundle.js
+dist/
 env/
 *.swp
 .env
