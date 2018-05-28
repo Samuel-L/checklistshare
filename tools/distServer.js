@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import compression from 'compression';
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 const app = express();
 
 app.use(compression());
