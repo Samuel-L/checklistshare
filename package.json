@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "test:prod": "npm test -- -u",
     "jest:watch": "jest --watch",
     "jest:coverage": "jest --coverage",
     "webpack": "webpack-dev-server --config ./webpack.config.dev.js",
