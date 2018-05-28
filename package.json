@@ -14,7 +14,12 @@
     "build:html": "babel-node ./tools/buildHtml.js",
     "prebuild": "npm-run-all clean-dist test build:html",
     "build": "babel-node ./tools/build.js",
-    "postbuild": "babel-node ./tools/distServer.js"
+    "postbuild": "babel-node ./tools/distServer.js",
+    "postinstall": "npm run build"
+  },
+  "engines": {
+    "node": "8.11.1",
+    "npm": "5.6.0"
   },
   "repository": {
     "type": "git",
