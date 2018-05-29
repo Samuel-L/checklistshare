@@ -28,7 +28,6 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = [
-    config('WHITELIST_URL'),
     '.herokuapp.com',
     '127.0.0.1'
 ]
