@@ -1,7 +1,7 @@
 {
   "name": "checklistshare",
   "version": "1.0.0",
-  "description": "A web application where you can create password-protected checklists and share them.",
+  "description": "A web application where you can create password-protected checklists and share them. ",
   "main": "index.js",
   "scripts": {
     "test": "jest",
