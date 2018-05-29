@@ -28,7 +28,8 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = [
-    config('WHITELIST_URL') 
+    config('WHITELIST_URL'),
+    '127.0.0.1'
 ]
 
 

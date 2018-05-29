@@ -1,2 +1,2 @@
 web: babel-node ./tools/distServer.js
-web: gunicorn ./api/api.wsgi --log-file -
+web: cd api && gunicorn api.wsgi --log-file -
