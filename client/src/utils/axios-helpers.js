@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-const baseURL = process.env.API_URL;
-console.log(baseURL);
+const baseURL = 'https://checklistshareapi.herokuapp.com/api';
 
 export const axiosInstance = axios.create({
   baseURL,
