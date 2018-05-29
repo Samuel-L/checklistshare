@@ -1,3 +1,4 @@
+require('dotenv').config({ path: '../.env' })
 import React from 'react';
 import { HashRouter } from 'react-router-dom';
 import { render } from 'react-dom';
