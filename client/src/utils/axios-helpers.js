@@ -1,11 +1,13 @@
 import axios from 'axios';
 
-let baseURL;
+let url;
 if (process.env.NODE_ENV === 'production') {
-  baseURL = 'https://checklistshareapi.herokuapp.com/api';
+  url = 'https://checklistshareapi.herokuapp.com/api';
 } else {
-  baseURL = 'localhost:8000/api';
+  url = 'localhost:8000/api';
 }
+
+const baseURL = url;
 
 export const axiosInstance = axios.create({
   baseURL,
