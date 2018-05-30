@@ -1,12 +1,5 @@
 const path = require('path');
 
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-const HtmlWebPackPluginConfig = new HtmlWebPackPlugin({
-  template: './client/src/index.html',
-  filename: 'index.html',
-  inject: 'body'
-});
-
 module.exports = {
   mode: 'development',
   entry: ['babel-polyfill', './client/src/index.jsx'],
@@ -24,5 +17,4 @@ module.exports = {
     ],
   },
   resolve: { extensions: ['.js', '.jsx'] },
-  plugins: [HtmlWebPackPluginConfig]
 };
