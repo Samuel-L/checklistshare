@@ -12,6 +12,7 @@ const styles = theme => ({
   },
   text: {
     marginTop: '10px',
+    textAlign: 'center',
   },
   link: {
     color: theme.palette.primary.A700,
