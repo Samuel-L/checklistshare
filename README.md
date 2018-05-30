@@ -1,7 +1,7 @@
-# Checklistshare - 1.0.0
+# [Checklistshare - 1.0.0](https://checklistshare.herokuapp.com)
 [![Build Status](https://travis-ci.org/Samuel-L/checklistshare.svg?branch=development)](https://travis-ci.org/Samuel-L/checklistshare)
 
-A web application where you can create password-protected checklists and share them. 
+A web application where you can create checklists, share them and let others add items to the list. 
 
 ## Setup for development
 1. Create a postgresql database
@@ -39,3 +39,4 @@ Python 3.6, Node v8.11.1, React, Redux, Django and Django Rest Framework
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
