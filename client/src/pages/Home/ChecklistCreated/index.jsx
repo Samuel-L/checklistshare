@@ -18,7 +18,7 @@ export class SuccessfulCreation extends Component {
 
     return (
       <React.Fragment>
-        <Grid item>
+        <Grid item xs={12} md={6}>
           <Typography
             variant="headline"
             align="center"
@@ -32,7 +32,7 @@ export class SuccessfulCreation extends Component {
           >
             {url}
           </Typography>
-          <CopyToClipboard text={url} onCopy={() => this.setState({ copied: true })}>
+          <CopyToClipboard text={url} onCopy={() => this.setState({ copied: true })} style={{ float: 'right' }}>
             <Button variant="raised" color="primary">
               Copy url
             </Button>
