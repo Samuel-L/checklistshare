@@ -4,7 +4,7 @@ let url;
 if (process.env.NODE_ENV === 'production') {
   url = 'https://checklistshareapi.herokuapp.com/api';
 } else {
-  url = 'localhost:8000/api';
+  url = 'http://localhost:8000/api';
 }
 
 const baseURL = url;
