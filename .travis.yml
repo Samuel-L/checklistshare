@@ -13,6 +13,7 @@ env:
         - BUILD_ON_TRAVIS=true
         - MODE="dev"
         - SECRET_KEY="v2=6o5fi3tfcajvs8)@v+7q)#!!-1xfhzn7y-(k3p=9pw(3e+i"
+        - DB_NAME="travis_ci_db"
     matrix:
         - DJANGO=2.0 DB=postgresql
 
