@@ -1,12 +1,5 @@
 const path = require('path');
 
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-const HtmlWebPackPluginConfig = new HtmlWebPackPlugin({
-  template: './client/src/index.html',
-  filename: 'index.html',
-  inject: 'body'
-});
-
 module.exports = {
   mode: 'development',
   entry: ['babel-polyfill', './client/src/index.jsx'],
@@ -14,6 +7,9 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './client/src'),
     filename: 'index_bundle.js',
+  },
+  devServer: {
+    contentBase: './client/src',
   },
   module: {
     rules: [
@@ -24,5 +20,4 @@ module.exports = {
     ],
   },
   resolve: { extensions: ['.js', '.jsx'] },
-  plugins: [HtmlWebPackPluginConfig]
 };

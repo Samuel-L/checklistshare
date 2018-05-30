@@ -1,29 +1,55 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
+import Button from 'material-ui/Button';
 import { CircularProgress } from 'material-ui/Progress';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import Snackbar from 'material-ui/Snackbar';
 
 import clientBaseURL from '../../../utils/client-helpers';
 
-const SuccessfulCreation = props => (
-  <Grid item>
-    <Typography
-      variant="headline"
-      align="center"
-      gutterBottom
-    >
-      Checklist created!
-    </Typography>
-    <Typography
-      variant="body2"
-      align="center"
-    >
-      {clientBaseURL}/{props.url}
-    </Typography>
-  </Grid>
-);
+export class SuccessfulCreation extends Component {
+  state = { copied: false };
+
+  render() {
+    const url = `${clientBaseURL}/${this.props.url}`;
+
+    return (
+      <React.Fragment>
+        <Grid item xs={12} md={6}>
+          <Typography
+            variant="headline"
+            align="center"
+            gutterBottom
+          >
+            Checklist created!
+          </Typography>
+          <Typography
+            variant="body2"
+            align="center"
+          >
+            {url}
+          </Typography>
+          <CopyToClipboard text={url} onCopy={() => this.setState({ copied: true })} style={{ float: 'right' }}>
+            <Button variant="raised" color="primary">
+              Copy url
+            </Button>
+          </CopyToClipboard>
+        </Grid>
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'left',
+          }}
+          open={this.state.copied}
+          message="URL was copied successfully!"
+        />
+      </React.Fragment>
+    );
+  }
+}
 
 SuccessfulCreation.propTypes = {
   url: PropTypes.string.isRequired,

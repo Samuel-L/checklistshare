@@ -12,6 +12,7 @@ env:
         - PIP_USE_MIRRORS=true
         - BUILD_ON_TRAVIS=true
         - MODE="dev"
+        - SECRET_KEY="v2=6o5fi3tfcajvs8)@v+7q)#!!-1xfhzn7y-(k3p=9pw(3e+i"
     matrix:
         - DJANGO=2.0 DB=postgresql
 
