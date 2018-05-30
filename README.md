@@ -1,5 +1,4 @@
 # [Checklistshare - 1.0.0](https://checklistshare.herokuapp.com)
-[![Build Status](https://travis-ci.org/Samuel-L/checklistshare.svg?branch=development)](https://travis-ci.org/Samuel-L/checklistshare)
 
 A web application where you can create checklists, share them and let others add items to the list. 
 
